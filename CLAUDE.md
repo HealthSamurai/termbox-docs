@@ -162,13 +162,13 @@ Second step content.
 
 ### Code Block with Title
 
-```markdown
+````markdown
 {% code title="config.yaml" %}
 ```yaml
 key: value
 ```
 {% endcode %}
-```
+````
 
 ### Embed (YouTube or link card)
 
