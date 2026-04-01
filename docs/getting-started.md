@@ -1,23 +1,64 @@
-# Getting Started with Termbox
+# Getting Started
 
-Termbox is a FHIR terminology server for ValueSets and CodeSystems, providing terminology services for healthcare applications.
+This section describes how to start Termbox for local development using Docker Compose with a PostgreSQL instance alongside it. Production deployments will typically use an external PostgreSQL instance.
 
-## What is Termbox?
+## Requirements
 
-Termbox provides:
+Before starting, make sure the following software is available:
 
-- **CodeSystem Management** - Store and query code systems (ICD-10, SNOMED CT, LOINC, etc.)
-- **ValueSet Expansion** - Expand value sets for validation and UI
-- **Concept Lookup** - Fast lookup and search for codes
-- **Terminology Operations** - $expand, $validate-code, $lookup, $translate
+- Docker
+- Docker Compose
 
 ## Quick Start
 
-1. Contact us at [health-samurai.io/contacts](https://health-samurai.io/contacts) to get access
-2. Load your terminology packages
-3. Use the terminology API in your application
+Create a `docker-compose.yaml` file with the following contents
 
-## Next Steps
+```yaml
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: termbox
+    volumes:
+    - postgres_data:/var/lib/postgresql
+  termbox:
+    depends_on:
+      - postgres
+    image: ghcr.io/healthsamurai/termbox:latest
+    pull_policy: always
+    ports:
+      - "3000:3000"
+    environment:
+      PG_USER: postgres
+      PG_PASSWORD: postgres
+      PG_HOST: postgres
+volumes:
+  postgres_data: {}
+```
 
-- [API Reference](api.md)
-- [Release Notes](release-notes.md)
+Then run these commands:
+
+```bash
+docker compose up -d               # start the services
+docker compose logs -f termbox     # view logs
+```
+
+Once you see a log like
+
+```log
+termbox.http-server[99,5] HTTP Server listening on  3000
+```
+
+It means Termbox is successfully running.
+
+To check the FHIR API is working run this command:
+
+```bash
+curl http://localhost:3000/fhir/metadata
+```
+
+It should return a JSON resource of type `CapabilityStatement`
+
+The UI should be available at `http://localhost:3000/ui`
