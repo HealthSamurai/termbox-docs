@@ -32,7 +32,7 @@ First, download THO from packages2:
 
 Now, in Termbox UI, navigate to `http://localhost:3000/ui/content`, there should be an `Ingest` button. After clicking it, a modal should appear:
 
-![UI Ingest](../assets/ui-ingest.png)
+![UI Ingest](../assets/ui-ingest.avif)
 
 Select the "FHIR Package file" option, and upload the file downloaded in the previous step. An _ingest_ job should start running and, after a short time, it should finalize and show the package loaded.
 

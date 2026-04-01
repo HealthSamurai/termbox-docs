@@ -2,7 +2,7 @@
 
 Termbox tries to be really, really fast.
 
-![Benchmark](../assets/benchmark.png)
+![Benchmark](../assets/benchmark.avif)
 
 ## FHIR TX Benchmarks
 
