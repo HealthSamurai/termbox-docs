@@ -1,5 +1,8 @@
 # Release Notes
 
-## Latest Release
+## 0.4.0
 
-Initial release documentation coming soon.
+- Performance improvements
+- Binary ingestion improvements
+- Support for the creation of CodeSystem and ValueSet via FHIR API
+- Conformance bug fixes
