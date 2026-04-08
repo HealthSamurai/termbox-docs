@@ -22,6 +22,7 @@
 ## Guides
 
 * [Examples](examples.md)
+* [CRUD](crud.md)
 * [RxNorm Guide](guides/rxnorm.md)
 * [SNOMED Guide](guides/snomed.md)
 
