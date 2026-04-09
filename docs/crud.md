@@ -63,19 +63,19 @@ Content-Type: application/json
           "code": "code2a",
           "display": "Display 2a",
           "definition": "First second level concept",
-          "property": [{"code": "prop", "valueCode": "new"}],
+          "property": [{ "code": "prop", "valueCode": "new" }],
           "concept": [
             {
               "code": "code2aI",
               "display": "Display 2aI",
               "definition": "First third level concept",
-              "property": [{"code": "prop", "valueCode": "old"}]
+              "property": [{ "code": "prop", "valueCode": "old" }]
             },
             {
               "code": "code2aII",
               "display": "Display 2aII",
               "definition": "Second third level concept",
-              "property": [{"code": "prop", "valueCode": "new"}]
+              "property": [{ "code": "prop", "valueCode": "new" }]
             }
           ]
         },
@@ -83,24 +83,25 @@ Content-Type: application/json
           "code": "code2b",
           "display": "Display 2b",
           "definition": "Second second level code",
-          "property": [{"code": "prop", "valueCode": "old"}]
+          "property": [{ "code": "prop", "valueCode": "old" }]
         }
       ]
     },
     {
       "code": "code3",
       "display": "Display 3",
-      "property": [{"code": "prop", "valueCode": "old"}]
+      "property": [{ "code": "prop", "valueCode": "old" }]
     }
   ]
 }
+
 ```
 
 The **response** includes a `Location` header pointing to the newly created CodeSystem, and the resource body with the `concept` array excised.
 
 ```http
 HTTP/1.1 201 Created
-Location: /fhir/CodeSystem/9191fce8-f7b0-4008-8387-bb140ae063f0
+Location: /fhir/CodeSystem/60e25275-2eed-43b1-b3d7-14c1291fc1b6
 Content-Type: application/json; charset=utf-8
 ```
 
@@ -147,7 +148,7 @@ Content-Type: application/json; charset=utf-8
   "status": "active",
   "language": "en",
   "hierarchyMeaning": "is-a",
-  "id": "9191fce8-f7b0-4008-8387-bb140ae063f0",
+  "id": "60e25275-2eed-43b1-b3d7-14c1291fc1b6",
   "url": "http://example.org/CodeSystem/cs1",
   "caseSensitive": true,
   "version": "0.1.0"
@@ -177,7 +178,8 @@ Content-Type: application/json; charset=utf-8
       "valueCode": "code1"
     },
     {
-      "name": "display"
+      "name": "display",
+      "valueString": "Display 1"
     },
     {
       "name": "name",
@@ -210,7 +212,8 @@ Content-Type: application/json; charset=utf-8
           }
         },
         {
-          "name": "value"
+          "name": "value",
+          "valueString": "Display 1"
         }
       ]
     },
@@ -222,7 +225,21 @@ Content-Type: application/json; charset=utf-8
           "valueCode": "de-DE"
         },
         {
-          "name": "value"
+          "name": "value",
+          "valueString": "Anzeige 1"
+        }
+      ]
+    },
+    {
+      "name": "property",
+      "part": [
+        {
+          "name": "code",
+          "valueCode": "prop"
+        },
+        {
+          "name": "value",
+          "valueCode": "old"
         }
       ]
     },
