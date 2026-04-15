@@ -51,9 +51,7 @@ Once you see a log like
 termbox.http-server[99,5] HTTP Server listening on  3000
 ```
 
-It means Termbox is successfully running.
-
-To check the FHIR API is working run this command:
+It means Termbox is successfully running. Before you can start using the Termbox FHIR API, you need to acquire a license. See [Licensing](licensing.md) for available license types and how to activate one. After that, you can start using the Termbox FHIR API. To check the FHIR API is working run this command:
 
 ```bash
 curl http://localhost:3000/fhir/metadata
