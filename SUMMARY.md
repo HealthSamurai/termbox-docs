@@ -29,4 +29,5 @@
 ## Misc
 
 * [Performance](performance.md)
+* [Licensing](licensing.md)
 * [Release Notes](release-notes.md)
