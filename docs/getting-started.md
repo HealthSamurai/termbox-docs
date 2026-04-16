@@ -26,7 +26,7 @@ services:
   termbox:
     depends_on:
       - postgres
-    image: ghcr.io/healthsamurai/termbox:latest
+    image: healthsamurai/termbox:latest
     pull_policy: always
     ports:
       - "3000:3000"
