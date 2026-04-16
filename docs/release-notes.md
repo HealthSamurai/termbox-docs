@@ -1,5 +1,12 @@
 # Release Notes
 
+## 0.6.0
+
+- FHIR package registry integration
+- Licensing
+- Ability to control ingestion resources
+- Bug fixes
+
 ## 0.5.0
 
 - Support for deleting CodeSystem and ValueSet via FHIR API
