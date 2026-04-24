@@ -4,82 +4,110 @@ Termbox does not ship with terminology content by default. Terminologies must be
 
 Content can be loaded into Termbox through three main mechanisms:
 
-- **User interface** – For a guided interactive loading
-- **Admin API** – For scripted imports and automation
-- **Syndication** – For automatic synchronization based on configuration
+- **Configuration file** – Declarative, file-based loading. Recommended for most deployments.
+- **User interface** – For guided interactive loading
+- **Admin API** – For scripted imports and automation
 
 These mechanisms allow Termbox to retrieve data from a variety of source types:
 
-| Source Type           | Description                                                                                                                                                | Current Status                          |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| FHIR Packages         | Standard FHIR Packages based on NPM. See https://hl7.org/fhir/packages.html                                                                                | ✅ Currently supported via manual upload |
-| FHIR Package registry | Ability to download packages (and dependencies) from registries such as: packages2, Simplifier, get-ig.org                                                 | ⚠️ Not yet supported.                   |
-| Syndication Feeds     | As described in the [NCTS Syndication feed spec](https://www.healthterminologies.gov.au/specs/v3/conformant-server-apps/syndication-api/syndication-feed/) | ⚠️ Not yet supported.                   |
-| Termbox Binaries      | Pre-indexed terminologies prepared for fast loading                                                                                                        | ✅ Currently supported via manual upload |
-| Termbox Catalog       | Curated repository of terminologies                                                                                                                        | ⚠️ Not yet supported.                   |
-| FHIR CRUD API         | Live authoring FHIR resources via API                                                                                                                      | ⚠️ Not yet supported.                   |
+| Source Type           | Description                                                                                                                                                | Current Status       |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| FHIR Packages         | Standard FHIR Packages based on NPM. See https://hl7.org/fhir/packages.html                                                                               | ✅ Supported          |
+| FHIR Bundles          | FHIR Bundle resources in JSON format                                                                                                                       | ✅ Supported          |
+| Termbox Gallery       | Curated repository of terminologies, referenced by canonical URL                                                                                           | ✅ Supported          |
+| FHIR Package registry | Ability to download packages (and dependencies) from registries such as: packages2, Simplifier, get-ig.org                                                 | ⚠️ Not yet supported |
+| Syndication Feeds     | As described in the [NCTS Syndication feed spec](https://www.healthterminologies.gov.au/specs/v3/conformant-server-apps/syndication-api/syndication-feed/) | ⚠️ Not yet supported |
+| FHIR CRUD API         | Live authoring FHIR resources via API                                                                                                                      | ⚠️ Not yet supported |
+
+## Loading data via configuration file
+
+The recommended way to load terminologies is via a `data.yaml` configuration file. This approach is declarative, version-controllable, and applied automatically on startup.
+
+Create a `data.yaml` file listing the sources to load:
+
+```yaml
+sources:
+  - type: npm
+    package: hl7.terminology
+  - type: npm
+    package: hl7.fhir.r4.core
+    version: 4.0.1
+  - type: gallery
+    url: http://snomed.info/sct
+    version: http://snomed.info/sct/83821000000107   # optional: specific edition
+  - type: gallery
+    url: http://loinc.org
+  - type: bundle
+    location: /data/bundle.json
+```
+
+Each entry in `sources` specifies a `type` and type-specific fields:
+
+| Type      | Description                                                    | Fields                                  |
+| --------- | -------------------------------------------------------------- | --------------------------------------- |
+| `npm`     | FHIR package from a package registry                           | `package`, optionally `version`         |
+| `gallery` | Terminology from the Termbox Gallery, by canonical URL         | `url`, optionally `version`             |
+| `bundle`  | FHIR Bundle file in JSON format                                | `location` (path inside the container)  |
+
+Then mount the file into the container and point `DATA_CONFIG_FILE` to it:
+
+```yaml
+services:
+  termbox:
+    environment:
+      DATA_CONFIG_FILE: /data/data.yaml
+    volumes:
+      - ./data.yaml:/data/data.yaml
+```
+
+Termbox will load and index all configured sources on startup.
 
 ## Loading data via UI
 
-Let's see an example of loading a FHIR Package into Termbox.
+Let's load `hl7.terminology` as an example.
 
-First, download THO from packages2:
+Navigate to `http://localhost:3000/ui/content` and click **Ingest**. In the modal, select **FHIR Package registry**.
 
-1. Go to https://packages2.fhir.org/packages
-2. Search for `hl7.terminology`
-3. Click on the `hl7.terminology` link (currently version `7.0.1`)
-4. It should download a file named `hl7.terminology-7.0.1.tgz`
+Type `hl7.terminology` in the search box. A list of matching packages will appear:
 
-Now, in Termbox UI, navigate to `http://localhost:3000/ui/content`, there should be an `Ingest` button. After clicking it, a modal should appear:
+![FHIR Package registry search](../assets/ui-registry.png)
 
-![UI Ingest](../assets/ui-ingest.avif)
+Hover over `hl7.terminology` (version 7.1.0) and click **Use** to select it, then click **Ingest**. Termbox will download the package and all its dependencies from the registry automatically.
 
-Select the "FHIR Package file" option, and upload the file downloaded in the previous step. An _ingest_ job should start running and, after a short time, it should finalize and show the package loaded.
-
-## Loading a pre-indexed binary file
-
-Next, let's load SNOMED International using a pre-indexed binary file[^2].
-
-First, download the binary file from https://storage.googleapis.com/termbox-public/snomed_int_20260201.bin
-
-Next, follow the same steps as before but this time select the _Binary file_ option. After a brief period of time, SNOMED International should be loaded, indexed, and ready to be queried.
+The UI also supports uploading FHIR package files and pre-indexed binary files directly — this is intended for special cases where content is not available through the registry or Gallery.
 
 ## Loading data via the Admin API
 
-Let's load RxNorm via API. First, download the file from https://storage.googleapis.com/termbox-public/rxnorm-full-03022026.bin
-
-Next, run this command:
+Let's load RxNorm via API:
 
 ```bash
-curl -X POST "http://localhost:3000/admin/ingest" \  
--F "type=bin" \  
--F "file=@rxnorm-full-03022026.bin"
+curl -X POST "http://localhost:3000/admin/ingest" \
+  -F "type=gallery" \
+  -F "url=http://www.nlm.nih.gov/research/umls/rxnorm"
 ```
 
-This should start a job and return a job-id and a status endpoint for the job, e.g.:
+This starts a job and returns a job ID and a status endpoint:
 
 ```json
 {
-  "job":"b5bd21a8-120c-4889-af87-42a618f32d21",
-  "status":"http://localhost:3000/admin/ingest/b5bd21a8-120c-4889-af87-42a618f32d21/status"
+  "job": "05c0b880-00bf-49f0-97f7-c03d51ab4470",
+  "status": "http://localhost:3000/admin/ingest/05c0b880-00bf-49f0-97f7-c03d51ab4470/status"
 }
 ```
 
-And the status endpoint can be monitored for progress and completion:
+Poll the status endpoint to monitor progress:
 
 ```bash
-curl "http://localhost:3000/admin/ingest/b5bd21a8-120c-4889-af87-42a618f32d21/status"
+curl "http://localhost:3000/admin/ingest/05c0b880-00bf-49f0-97f7-c03d51ab4470/status"
 ```
 
 ```json
 {
-  "key":"jobs.ingest/binary",
-  "status":"started",
-  "start-time":129350235595002,
-  "progress":40
+  "key": "jobs.ingest/gallery",
+  "status": "started",
+  "start-time": 12460899320397,
+  "progress": 40
 }
 ```
 
-## Available pre-indexed files
-
-In upcoming releases these files will be available via an online registry and we'll release a standalone cli[^3] to transform terminologies to FHIR and to index them. The current list of files is being published to an S3 bucket publicly available here: https://storage.googleapis.com/termbox-public.
+The Admin API also supports uploading binary files directly for special cases where content is not available through the Gallery.
