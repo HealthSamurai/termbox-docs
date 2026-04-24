@@ -70,7 +70,7 @@ Navigate to `http://localhost:3000/ui/content` and click **Ingest**. In the moda
 
 Type `hl7.terminology` in the search box. A list of matching packages will appear:
 
-![FHIR Package registry search](../assets/ui-registry.png)
+![FHIR Package registry search](../assets/ui-registry.avif)
 
 Hover over `hl7.terminology` (version 7.1.0) and click **Use** to select it, then click **Ingest**. Termbox will download the package and all its dependencies from the registry automatically.
 
