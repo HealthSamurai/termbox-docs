@@ -1,5 +1,14 @@
 # Release Notes
 
+## 0.7.0
+
+- Content preload from config file
+- Support for gallery source
+- Support for bundle source
+- Support for supplements (data only)
+- FHIR packages loading fixes
+- Security patch for ValueSet operations
+
 ## 0.6.0
 
 - FHIR package registry integration
