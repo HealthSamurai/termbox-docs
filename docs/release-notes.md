@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.8.0
+
+- Support for atom feed (syndication)
+- Support for batch request
+- Data loading fixes
+
 ## 0.7.0
 
 - Content preload from config file
