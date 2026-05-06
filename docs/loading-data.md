@@ -16,7 +16,7 @@ These mechanisms allow Termbox to retrieve data from a variety of source types:
 | FHIR Bundles          | FHIR Bundle resources in JSON format                                                                                                                       | ✅ Supported           |
 | Termbox Gallery       | Curated repository of terminologies, referenced by canonical URL                                                                                           | ✅ Supported           |
 | FHIR Package registry | Ability to download packages (and dependencies) from registries such as: packages2, Simplifier, get-ig.org                                                 | ✅️ Supported           |
-| Syndication Feeds     | As described in the [NCTS Syndication feed spec](https://www.healthterminologies.gov.au/specs/v3/conformant-server-apps/syndication-api/syndication-feed/) | ✅️️ Not yet supported   |
+| Syndication Feeds     | As described in the [NCTS Syndication feed spec](https://www.healthterminologies.gov.au/specs/v3/conformant-server-apps/syndication-api/syndication-feed/) | ✅️️ Supported           |
 | FHIR CRUD API         | Live authoring FHIR resources via API                                                                                                                      | ⚠️ Partially supported |
 
 ## Loading data via configuration file
