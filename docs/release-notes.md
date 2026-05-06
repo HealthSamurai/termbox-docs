@@ -3,8 +3,6 @@
 ## 0.8.0
 
 - Support for syndication feed
-- Support for on-demand reload
-- Support for data sync mode
 - Support for batch request
 - Data loading fixes
 
