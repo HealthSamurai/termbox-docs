@@ -10,14 +10,14 @@ Content can be loaded into Termbox through three main mechanisms:
 
 These mechanisms allow Termbox to retrieve data from a variety of source types:
 
-| Source Type           | Description                                                                                                                                                | Current Status       |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| FHIR Packages         | Standard FHIR Packages based on NPM. See https://hl7.org/fhir/packages.html                                                                               | ✅ Supported          |
-| FHIR Bundles          | FHIR Bundle resources in JSON format                                                                                                                       | ✅ Supported          |
-| Termbox Gallery       | Curated repository of terminologies, referenced by canonical URL                                                                                           | ✅ Supported          |
-| FHIR Package registry | Ability to download packages (and dependencies) from registries such as: packages2, Simplifier, get-ig.org                                                 | ⚠️ Not yet supported |
-| Syndication Feeds     | As described in the [NCTS Syndication feed spec](https://www.healthterminologies.gov.au/specs/v3/conformant-server-apps/syndication-api/syndication-feed/) | ⚠️ Not yet supported |
-| FHIR CRUD API         | Live authoring FHIR resources via API                                                                                                                      | ⚠️ Not yet supported |
+| Source Type           | Description                                                                                                                                                | Current Status        |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| FHIR Packages         | Standard FHIR Packages based on NPM. See https://hl7.org/fhir/packages.html                                                                                | ✅ Supported           |
+| FHIR Bundles          | FHIR Bundle resources in JSON format                                                                                                                       | ✅ Supported           |
+| Termbox Gallery       | Curated repository of terminologies, referenced by canonical URL                                                                                           | ✅ Supported           |
+| FHIR Package registry | Ability to download packages (and dependencies) from registries such as: packages2, Simplifier, get-ig.org                                                 | ✅️ Supported           |
+| Syndication Feeds     | As described in the [NCTS Syndication feed spec](https://www.healthterminologies.gov.au/specs/v3/conformant-server-apps/syndication-api/syndication-feed/) | ✅️️ Not yet supported   |
+| FHIR CRUD API         | Live authoring FHIR resources via API                                                                                                                      | ⚠️ Partially supported |
 
 ## Loading data via configuration file
 
@@ -43,11 +43,11 @@ sources:
 
 Each entry in `sources` specifies a `type` and type-specific fields:
 
-| Type      | Description                                                    | Fields                                  |
-| --------- | -------------------------------------------------------------- | --------------------------------------- |
-| `npm`     | FHIR package from a package registry                           | `package`, optionally `version`         |
-| `gallery` | Terminology from the Termbox Gallery, by canonical URL         | `url`, optionally `version`             |
-| `bundle`  | FHIR Bundle file in JSON format                                | `location` (path inside the container)  |
+| Type      | Description                                            | Fields                                 |
+| --------- | ------------------------------------------------------ | -------------------------------------- |
+| `npm`     | FHIR package from a package registry                   | `package`, optionally `version`        |
+| `gallery` | Terminology from the Termbox Gallery, by canonical URL | `url`, optionally `version`            |
+| `bundle`  | FHIR Bundle file in JSON format                        | `location` (path inside the container) |
 
 Then mount the file into the container and point `DATA_CONFIG_FILE` to it:
 
