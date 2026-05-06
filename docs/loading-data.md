@@ -35,7 +35,7 @@ sources:
     version: 4.0.1
   - type: gallery
     url: http://snomed.info/sct
-    version: http://snomed.info/sct/83821000000107   # optional: specific edition
+    version: http://snomed.info/sct/83821000000107
   - type: gallery
     url: http://loinc.org
   - type: bundle
@@ -53,7 +53,7 @@ services:
       - ./data.yaml:/data/data.yaml
 ```
 
-Termbox will load and index all configured sources on startup.
+Termbox will load and index all configured sources on startup. The optional `sync: true` (default: `false`) field enables synchronization mode: previously loaded content that is no longer listed in the file will be removed on startup.
 
 ## Source types
 
