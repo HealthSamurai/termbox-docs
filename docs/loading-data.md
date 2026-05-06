@@ -40,8 +40,6 @@ sources:
     url: http://loinc.org
   - type: bundle
     location: /data/bundle.json
-  - type: atom
-    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
 ```
 
 Then mount the file into the container and point `DATA_CONFIG_FILE` to it:
@@ -56,6 +54,8 @@ services:
 ```
 
 Termbox will load and index all configured sources on startup.
+
+## Source types
 
 Each entry in `sources` specifies a `type` and type-specific fields.
 
@@ -117,44 +117,48 @@ Loads from a syndication feed.
 - `auth.client_secret_file` (optional) path to a file containing the client secret
 
 ```yaml
-- type: atom
-  feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+sources:
+  - type: atom
+    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
 ```
 
 Feeds that require authentication use OAuth2 client credentials. Use one of `client_secret`, `client_secret_env`, or `client_secret_file` to provide the secret.
 
 ```yaml
-- type: atom
-  feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
-  auth:
-    type: client_credentials
-    token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
-    client_id: your-client-id
-    client_secret: your-client-secret
+sources:
+  - type: atom
+    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+    auth:
+      type: client_credentials
+      token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
+      client_id: your-client-id
+      client_secret: your-client-secret
 ```
 
 Or load from an environment variable:
 
 ```yaml
-- type: atom
-  feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
-  auth:
-    type: client_credentials
-    token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
-    client_id: your-client-id
-    client_secret_env: NHS_CLIENT_SECRET
+sources:
+  - type: atom
+    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+    auth:
+      type: client_credentials
+      token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
+      client_id: your-client-id
+      client_secret_env: NHS_CLIENT_SECRET
 ```
 
 Or load from a local file:
 
 ```yaml
-- type: atom
-  feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
-  auth:
-    type: client_credentials
-    token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
-    client_id: your-client-id
-    client_secret_file: /run/secrets/nhs-client-secret
+sources:
+  - type: atom
+    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+    auth:
+      type: client_credentials
+      token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
+      client_id: your-client-id
+      client_secret_file: /run/secrets/nhs-client-secret
 ```
 
 ## Loading data via UI
