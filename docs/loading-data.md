@@ -63,8 +63,10 @@ Each entry in `sources` specifies a `type` and type-specific fields.
 
 Downloads a FHIR package from a package registry.
 
-- `package` package name
-- `version` (optional) package version; omit to use the latest
+| Field     | Optional | Description                             |
+| --------- | -------- | --------------------------------------- |
+| `package` |          | Package name                            |
+| `version` | yes      | Package version; omit to use the latest |
 
 ```yaml
 sources:
@@ -79,8 +81,10 @@ sources:
 
 Loads a terminology from the Termbox Gallery by its canonical URL.
 
-- `url` canonical URL of the terminology
-- `version` (optional) specific version or edition
+| Field     | Optional | Description                      |
+| --------- | -------- | -------------------------------- |
+| `url`     |          | Canonical URL of the terminology |
+| `version` | yes      | Specific version or edition      |
 
 ```yaml
 sources:
@@ -95,7 +99,9 @@ sources:
 
 Loads a FHIR Bundle from a JSON file.
 
-- `location` path inside the container
+| Field      | Optional | Description               |
+| ---------- | -------- | ------------------------- |
+| `location` |          | Path inside the container |
 
 ```yaml
 sources:
@@ -107,14 +113,16 @@ sources:
 
 Loads from a syndication feed.
 
-- `feed` URL of the syndication feed
-- `auth` (optional) authentication configuration
-- `auth.type` auth strategy; only `client_credentials` is supported
-- `auth.token_url` OAuth2 token endpoint
-- `auth.client_id` client ID
-- `auth.client_secret` (optional) plaintext client secret
-- `auth.client_secret_env` (optional) environment variable containing the client secret
-- `auth.client_secret_file` (optional) path to a file containing the client secret
+| Field                     | Optional | Description                                           |
+| ------------------------- | -------- | ----------------------------------------------------- |
+| `feed`                    |          | URL of the syndication feed                           |
+| `auth`                    | yes      | Authentication configuration                          |
+| `auth.type`               |          | Auth strategy; only `client_credentials` is supported |
+| `auth.token_url`          |          | OAuth2 token endpoint                                 |
+| `auth.client_id`          |          | Client ID                                             |
+| `auth.client_secret`      | yes      | Plaintext client secret                               |
+| `auth.client_secret_env`  | yes      | Environment variable containing the client secret     |
+| `auth.client_secret_file` | yes      | Path to a file containing the client secret           |
 
 ```yaml
 sources:
