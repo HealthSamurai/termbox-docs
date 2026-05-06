@@ -127,7 +127,7 @@ Loads from a syndication feed.
 ```yaml
 sources:
   - type: atom
-    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+    feed: https://ontology.nhs.uk/production1/synd/syndication.xml
 ```
 
 Feeds that require authentication use OAuth2 client credentials. Use one of `client_secret`, `client_secret_env`, or `client_secret_file` to provide the secret.
@@ -135,7 +135,7 @@ Feeds that require authentication use OAuth2 client credentials. Use one of `cli
 ```yaml
 sources:
   - type: atom
-    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+    feed: https://ontology.nhs.uk/production1/synd/syndication.xml
     auth:
       type: client_credentials
       token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
@@ -148,7 +148,7 @@ Or load from an environment variable:
 ```yaml
 sources:
   - type: atom
-    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+    feed: https://ontology.nhs.uk/production1/synd/syndication.xml
     auth:
       type: client_credentials
       token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
@@ -161,7 +161,7 @@ Or load from a local file:
 ```yaml
 sources:
   - type: atom
-    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+    feed: https://ontology.nhs.uk/production1/synd/syndication.xml
     auth:
       type: client_credentials
       token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
