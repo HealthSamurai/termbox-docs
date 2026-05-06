@@ -218,3 +218,38 @@ curl "http://localhost:3000/admin/ingest/05c0b880-00bf-49f0-97f7-c03d51ab4470/st
 ```
 
 The Admin API also supports uploading binary files directly for special cases where content is not available through the Gallery.
+
+## Reloading the configuration file
+
+To trigger a reload of `data.yaml` without restarting Termbox:
+
+```bash
+curl -X POST "http://localhost:3000/admin/loader/reload"
+```
+
+You can also pass a configuration body directly, using the same format as `data.yaml`:
+
+```bash
+curl -X POST "http://localhost:3000/admin/loader/reload" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sync": true,
+    "sources": [
+      {
+        "type": "gallery",
+        "url": "http://snomed.info/sct"
+      }
+    ]
+  }'
+```
+
+Without a body, Termbox reloads from the configured `data.yaml` file. With a body, the JSON payload is used as the configuration instead. Including `sync: true` in either case will remove any previously loaded content not listed in the sources.
+
+Both variants return a job URL that can be polled to track completion:
+
+```json
+{
+  "job": "d00a2ba1-e346-45e1-8b2a-bad2497689f2",
+  "status": "http://localhost:3000/admin/jobs/d00a2ba1-e346-45e1-8b2a-bad2497689f2/status"
+}
+```
