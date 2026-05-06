@@ -26,6 +26,7 @@ The recommended way to load terminologies is via a `data.yaml` configuration fil
 Create a `data.yaml` file listing the sources to load:
 
 ```yaml
+sync: true
 sources:
   - type: npm
     package: hl7.terminology
@@ -39,15 +40,9 @@ sources:
     url: http://loinc.org
   - type: bundle
     location: /data/bundle.json
+  - type: atom
+    feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
 ```
-
-Each entry in `sources` specifies a `type` and type-specific fields:
-
-| Type      | Description                                            | Fields                                 |
-| --------- | ------------------------------------------------------ | -------------------------------------- |
-| `npm`     | FHIR package from a package registry                   | `package`, optionally `version`        |
-| `gallery` | Terminology from the Termbox Gallery, by canonical URL | `url`, optionally `version`            |
-| `bundle`  | FHIR Bundle file in JSON format                        | `location` (path inside the container) |
 
 Then mount the file into the container and point `DATA_CONFIG_FILE` to it:
 
@@ -61,6 +56,106 @@ services:
 ```
 
 Termbox will load and index all configured sources on startup.
+
+Each entry in `sources` specifies a `type` and type-specific fields.
+
+### npm
+
+Downloads a FHIR package from a package registry.
+
+- `package` package name
+- `version` (optional) package version; omit to use the latest
+
+```yaml
+sources:
+  - type: npm
+    package: hl7.terminology
+  - type: npm
+    package: hl7.fhir.r4.core
+    version: 4.0.1
+```
+
+### gallery
+
+Loads a terminology from the Termbox Gallery by its canonical URL.
+
+- `url` canonical URL of the terminology
+- `version` (optional) specific version or edition
+
+```yaml
+sources:
+  - type: gallery
+    url: http://loinc.org
+  - type: gallery
+    url: http://snomed.info/sct
+    version: http://snomed.info/sct/900000000000207008/version/20260201
+```
+
+### bundle
+
+Loads a FHIR Bundle from a JSON file.
+
+- `location` path inside the container
+
+```yaml
+sources:
+  - type: bundle
+    location: /data/bundle.json
+```
+
+### atom
+
+Loads from a syndication feed.
+
+- `feed` URL of the syndication feed
+- `auth` (optional) authentication configuration
+- `auth.type` auth strategy; only `client_credentials` is supported
+- `auth.token_url` OAuth2 token endpoint
+- `auth.client_id` client ID
+- `auth.client_secret` (optional) plaintext client secret
+- `auth.client_secret_env` (optional) environment variable containing the client secret
+- `auth.client_secret_file` (optional) path to a file containing the client secret
+
+```yaml
+- type: atom
+  feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+```
+
+Feeds that require authentication use OAuth2 client credentials. Use one of `client_secret`, `client_secret_env`, or `client_secret_file` to provide the secret.
+
+```yaml
+- type: atom
+  feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+  auth:
+    type: client_credentials
+    token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
+    client_id: your-client-id
+    client_secret: your-client-secret
+```
+
+Or load from an environment variable:
+
+```yaml
+- type: atom
+  feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+  auth:
+    type: client_credentials
+    token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
+    client_id: your-client-id
+    client_secret_env: NHS_CLIENT_SECRET
+```
+
+Or load from a local file:
+
+```yaml
+- type: atom
+  feed: https://ontology.nhs.uk/production2/fhir/synd/syndication.xml
+  auth:
+    type: client_credentials
+    token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
+    client_id: your-client-id
+    client_secret_file: /run/secrets/nhs-client-secret
+```
 
 ## Loading data via UI
 
