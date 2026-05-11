@@ -22,30 +22,30 @@ Similarly, if you send a request to the FHIR API, you will receive an error resp
 }
 ```
 
-Both messages describe the way to acquire a license. Simply navigate to the indicated URL and choose an option. After acquiring a license, you are ready to start using the FHIR API. Termbox currently offers two license types: **Community** and **Professional Edition**.
+Both messages describe the way to acquire a license. Simply navigate to the indicated URL and choose an option. After acquiring a license, you are ready to start using the FHIR API. Termbox currently offers two license types: **Development** and **Production License**.
 
-## Community
+## Development License
 
-The community license is free and intended for:
+The development license is free and intended for:
 
-- Development and Evaluation
-- Research & academic use
-- Non-commercial projects
+- Development and evaluation
+- Research and prototyping
+- Any non-production use
 
-To get a community license, simply follow the steps described in `/ui/license` page. Create an account in Health Samurai if you don't have one or sign-in if you do. You will be automatically redirected back to termbox and the _License required_ message will disappear. You can start using the FHIR API.
+To get a development license, simply follow the steps described in `/ui/license` page. Create an account in Health Samurai if you don't have one or sign-in if you do. You will be automatically redirected back to termbox and the _License required_ message will disappear. You can start using the FHIR API.
 
-## Professional Edition
+## Production License
 
-The **Professional Edition** license is intended for:
+The **Production License** is required for:
 
+- Production deployments
 - Commercial use
-- Production environments
 
-To get a **Professional Edition** license, contact Health Samurai to discuss your use case and make a commercial agreement.
+To get a **Production License**, contact Health Samurai to discuss your use case and make a commercial agreement.
 
 ## The `LICENSE` Env Var
 
-Additionally, you can provide a license key directly via environment variable instead of using the UI. The key is issued by Health Samurai as part of a **Professional Edition** license agreement. This is the recommended way to run Termbox in production environments.
+Additionally, you can provide a license key directly via environment variable instead of using the UI. The key is issued by Health Samurai as part of a **Production License** agreement. This is the recommended way to run Termbox in production environments.
 
 ```bash
 export LICENSE="WAIdt5WQJzFA9gyF6oQishsoOxaA8iEPJQw..."
