@@ -1,5 +1,13 @@
 # Release Notes
 
+## 0.9.0
+
+- FHIR Ops interface: Ability to run FHIR Operations from Termbox UI
+- Resource details interface: Detailed view for CodeSystems and ValueSets
+- Atom: Filter support
+- Data Loader: sync: true option for content synchronization
+- Bug fixes and other enhancements
+
 ## 0.8.0
 
 - Support for syndication feed
