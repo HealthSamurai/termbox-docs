@@ -3,3 +3,4 @@
 
 redirects:
   crud: CRUD/README.md
+  loading-data: loading-data/README.md

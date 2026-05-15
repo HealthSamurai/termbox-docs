@@ -5,7 +5,11 @@
 ## Getting Started
 
 * [Getting Started](getting-started.md)
-* [Loading Data](loading-data.md)
+* [Loading Data](loading-data/README.md)
+  * [NPM](loading-data/npm.md)
+  * [Termbox Gallery](loading-data/gallery.md)
+  * [FHIR Bundle](loading-data/bundle.md)
+  * [Atom Feed](loading-data/atom.md)
 
 ## Architecture
 
