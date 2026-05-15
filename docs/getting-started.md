@@ -34,6 +34,7 @@ services:
       PG_USER: postgres
       PG_PASSWORD: postgres
       PG_HOST: postgres
+      PG_DATABASE: termbox
 volumes:
   postgres_data: {}
 ```
