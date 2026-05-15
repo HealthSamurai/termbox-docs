@@ -1,13 +1,11 @@
-# CRUD
+# CodeSystem
 
-Full support for [CRUD](https://hl7.org/fhir/R4/http.html) is planned. Currently, only [creation](https://hl7.org/fhir/R4/http.html#create) of CodeSystems and ValueSets is supported.
+## Create
 
-## Create a CodeSystem
-
-The example below creates a simple code system.
+The example below creates a CodeSystem with a three-level concept hierarchy, custom properties, and multi-language designations.
 
 ```http
-POST /fhir/CodeSystem
+POST http://localhost:3000/fhir/CodeSystem
 Content-Type: application/json
 ```
 
@@ -21,7 +19,7 @@ Content-Type: application/json
   "title": "Example Code System",
   "status": "active",
   "experimental": false,
-  "date": "2026-04-08",
+  "date": "2026-05-15",
   "caseSensitive": true,
   "hierarchyMeaning": "is-a",
   "content": "complete",
@@ -94,75 +92,67 @@ Content-Type: application/json
     }
   ]
 }
-
 ```
 
-The **response** includes a `Location` header pointing to the newly created CodeSystem, and the resource body with the `concept` array excised.
+The response includes a `Location` header pointing to the newly created resource. The `concept` array is excised from the response body.
 
 ```http
 HTTP/1.1 201 Created
-Location: /fhir/CodeSystem/60e25275-2eed-43b1-b3d7-14c1291fc1b6
+Location: http://localhost:3000/fhir/CodeSystem/d528f194-091b-4ec7-ab21-dcfead860d2c
 Content-Type: application/json; charset=utf-8
 ```
 
 ```json
 {
-  "date": "2026-04-08",
+  "resourceType": "CodeSystem",
+  "id": "60e25275-2eed-43b1-b3d7-14c1291fc1b6",
+  "url": "http://example.org/CodeSystem/cs1",
+  "version": "0.1.0",
+  "name": "ExampleCodeSystem",
+  "title": "Example Code System",
+  "language": "en",
+  "status": "active",
+  "experimental": false,
+  "date": "2026-05-15",
+  "caseSensitive": true,
+  "hierarchyMeaning": "is-a",
   "content": "complete",
   "property": [
     {
-      "type": "code",
       "code": "prop",
-      "uri": "http://hl7.org/fhir/test/CodeSystem/properties#prop"
+      "uri": "http://hl7.org/fhir/test/CodeSystem/properties#prop",
+      "type": "code"
     },
     {
-      "type": "code",
       "code": "status",
-      "uri": "http://hl7.org/fhir/concept-properties#status"
+      "uri": "http://hl7.org/fhir/concept-properties#status",
+      "type": "code"
     },
     {
-      "type": "boolean",
       "code": "notSelectable",
-      "uri": "http://hl7.org/fhir/concept-properties#notSelectable"
+      "uri": "http://hl7.org/fhir/concept-properties#notSelectable",
+      "type": "boolean"
     }
   ],
-  "name": "ExampleCodeSystem",
-  "experimental": false,
-  "resourceType": "CodeSystem",
-  "title": "Example Code System",
   "extension": [
     {
+      "url": "http://health-samurai.io/extensions/excised-data",
       "extension": [
-        {
-          "valueString": "concept",
-          "url": "path"
-        },
-        {
-          "url": "count",
-          "valueInteger": 3
-        }
-      ],
-      "url": "http://health-samurai.io/extensions/excised-data"
+        { "url": "path", "valueString": "concept" },
+        { "url": "count", "valueInteger": 3 }
+      ]
     }
-  ],
-  "status": "active",
-  "language": "en",
-  "hierarchyMeaning": "is-a",
-  "id": "60e25275-2eed-43b1-b3d7-14c1291fc1b6",
-  "url": "http://example.org/CodeSystem/cs1",
-  "caseSensitive": true,
-  "version": "0.1.0"
+  ]
 }
 ```
 
 ## Lookup a Concept
 
-After creating a CodeSystem, you can start using [terminology operations](https://hl7.org/fhir/terminology-module.html).
+[$lookup](https://hl7.org/fhir/codesystem-operation-lookup.html) resolves a code against the newly created CodeSystem and returns its display, designations, and properties.
 
 ```http
-GET /fhir/CodeSystem/$lookup?system=http://example.org/CodeSystem/cs1&code=code1
+GET http://localhost:3000/fhir/CodeSystem/$lookup?system=http://example.org/CodeSystem/cs1&code=code1&property=prop
 ```
-**Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -190,12 +180,12 @@ Content-Type: application/json; charset=utf-8
       "valueUri": "http://example.org/CodeSystem/cs1"
     },
     {
-      "name": "version",
-      "valueString": "0.1.0"
-    },
-    {
       "name": "abstract",
       "valueBoolean": false
+    },
+    {
+      "name": "version",
+      "valueString": "0.1.0"
     },
     {
       "name": "designation",
@@ -258,4 +248,16 @@ Content-Type: application/json; charset=utf-8
     }
   ]
 }
+```
+
+## Delete
+
+[Deleting](https://hl7.org/fhir/http.html#delete) a CodeSystem removes the resource and all its concepts from the server.
+
+```http
+DELETE http://localhost:3000/fhir/CodeSystem/d528f194-091b-4ec7-ab21-dcfead860d2c
+```
+
+```http
+HTTP/1.1 204 No Content
 ```
