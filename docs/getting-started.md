@@ -22,10 +22,16 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: termbox
     volumes:
-    - postgres_data:/var/lib/postgresql
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   termbox:
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     image: healthsamurai/termbox:latest
     pull_policy: always
     ports:
