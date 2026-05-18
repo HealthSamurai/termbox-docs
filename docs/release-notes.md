@@ -1,5 +1,13 @@
 # Release Notes
 
+## 0.10.0
+
+- JSON file ingestion improvements: Streaming JSON for lower memory consumption
+- Prometheus metrics support (/metrics)
+- Admin reset endpoint (/admin/reset)
+- Some performance improvements
+- Bug fixes and other enhancements
+
 ## 0.9.0
 
 - FHIR Ops interface: Ability to run FHIR Operations from Termbox UI
