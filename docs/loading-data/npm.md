@@ -23,10 +23,10 @@ sources:
 
 ## Local archive
 
-Load a package from a local `.tgz` file. Relative paths are resolved from the Termbox root. Dependencies are not resolved automatically, each must be listed as a separate source entry.
+Load a package from a local `.tgz` file. Relative paths are resolved from the Termbox root. Dependencies are not resolved automatically; each must be listed as a separate source entry.
 
 ```yaml
 sources:
   - type: npm
-    location: ./.tx-content/hl7.fhir.r4.core-4.0.1.tgz
+    location: ../.tx-content/hl7.fhir.r4.core-4.0.1.tgz
 ```
