@@ -2,22 +2,24 @@
 
 Loads from a syndication feed.
 
-| Field                     | Optional | Description                                                                                      |
-| ------------------------- | -------- | ------------------------------------------------------------------------------------------------ |
-| `feed`                    |          | URL of the syndication feed                                                                      |
-| `auth`                    | yes      | Authentication configuration                                                                     |
-| `auth.type`               |          | Auth strategy; only `client_credentials` is supported                                            |
-| `auth.token_url`          |          | OAuth2 token endpoint                                                                            |
-| `auth.client_id`          |          | Client ID                                                                                        |
-| `auth.client_secret`      | yes      | Plaintext client secret                                                                          |
-| `auth.client_secret_env`  | yes      | Environment variable containing the client secret                                                |
-| `auth.client_secret_file` | yes      | Path to a file containing the client secret                                                      |
-| `include`                 | yes      | List of filters; only entries matching any filter are loaded                                     |
-| `include.url`             |          | Canonical URL to match                                                                           |
-| `include.version`         | yes      | Version pattern to match (supports [wildcards](https://build.fhir.org/references.html#matching)) |
-| `exclude`                 | yes      | List of filters; entries matching any filter are skipped                                         |
-| `exclude.url`             |          | Canonical URL to match                                                                           |
-| `exclude.version`         | yes      | Version pattern to match (supports [wildcards](https://build.fhir.org/references.html#matching)) |
+| Field                     | Optional | Description                                                                                       |
+| ------------------------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `feed`                    |          | URL of the syndication feed                                                                       |
+| `auth`                    | yes      | Authentication configuration                                                                      |
+| `auth.type`               |          | Auth strategy; only `client_credentials` is supported, depends on `client_id` and `client_secret` |
+| `auth.token_url`          |          | OAuth2 token endpoint                                                                             |
+| `auth.client_id`          | yes      | Client ID                                                                                         |
+| `auth.client_id_env`      | yes      | Environment variable containing the client id                                                     |
+| `auth.client_id_file`     | yes      | Path to a file containing the client id                                                           |
+| `auth.client_secret`      | yes      | Plaintext client secret                                                                           |
+| `auth.client_secret_env`  | yes      | Environment variable containing the client secret                                                 |
+| `auth.client_secret_file` | yes      | Path to a file containing the client secret                                                       |
+| `include`                 | yes      | List of filters; only entries matching any filter are loaded                                      |
+| `include.url`             |          | Canonical URL to match                                                                            |
+| `include.version`         | yes      | Version pattern to match (supports [wildcards](https://build.fhir.org/references.html#matching))  |
+| `exclude`                 | yes      | List of filters; entries matching any filter are skipped                                          |
+| `exclude.url`             |          | Canonical URL to match                                                                            |
+| `exclude.version`         | yes      | Version pattern to match (supports [wildcards](https://build.fhir.org/references.html#matching))  |
 
 ```yaml
 sources:
@@ -49,7 +51,7 @@ sources:
     auth:
       type: client_credentials
       token_url: https://ontology.nhs.uk/authorisation/auth/realms/nhs-digital-terminology/protocol/openid-connect/token
-      client_id: your-client-id
+      client_id_env: NHS_CLIENT_ID
       client_secret_env: NHS_CLIENT_SECRET
 ```
 
