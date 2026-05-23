@@ -2,13 +2,22 @@
 
 Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSystems[^4]
 
-> [!NOTE] Support Legend
-> - ✅  Full support - Complete implementation with all parameters
-> - 🏗️  In development - Under development, expect partial support in the meantime
-> - ❌  No support - In our roadmap
-> - 🚫  Won't support - Not in our roadmap
+{% hint style="info" %}
+**Support Legend**
+- ✅ Full support - Complete implementation with all parameters
+- 🏗️ In development - Under development, expect partial support in the meantime
+- ❌ No support - In our roadmap
+- 🚫 Won't support - Not in our roadmap
+{% endhint %}
 
 ## Operations
+
+<style>
+.operations-table td:first-child,
+.operations-table th:first-child { white-space: nowrap; }
+</style>
+
+<div class="operations-table">
 
 | Operation                   | Description                                                                                                                                                   | Support |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -20,6 +29,8 @@ Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSy
 | `ValueSet/$validate-code`   | Validate that a coded value is in the set of codes allowed by a value set. See [docs](https://www.hl7.org/fhir/valueset-operation-validate-code.html)         | ✅       |
 | `ConceptMap/$translate`     | Translate a code from one terminology to another. See [docs](https://www.hl7.org/fhir/conceptmap-operation-translate.html)                                    | ✅       |
 | `ConceptMap/$closure`       | Maintenance of a client-side transitive closure table. See [docs](https://www.hl7.org/fhir/conceptmap-operation-closure.html)                                 | ❌       |
+
+</div>
 
 ## Features
 

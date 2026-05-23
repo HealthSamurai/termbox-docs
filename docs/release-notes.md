@@ -1,5 +1,13 @@
 # Release Notes
 
+## 0.11.0
+
+- Support for `ConceptMap` and `ConceptMap/$translate`
+- Support for SNOMED implicit concept maps
+- Atom: support for `client_id_env` as well as `client_id_file` and `client_secret_file`
+- Data.yaml: support for local npm packages
+- Bug fixes and other enhancements
+
 ## 0.10.0
 
 - JSON file ingestion improvements: Streaming JSON for lower memory consumption

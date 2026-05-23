@@ -2,6 +2,13 @@
 
 This section documents all of the environment variables that are currently available
 
+<style>
+.config-table td:first-child,
+.config-table th:first-child { white-space: nowrap; }
+</style>
+
+<div class="config-table">
+
 | Env var                    | Description                                                          | Default                              | Values / Examples                |
 | -------------------------- | -------------------------------------------------------------------- | ------------------------------------ | -------------------------------- |
 | `LICENSE`                  | Termbox license                                                      |                                      |                                  |
@@ -21,3 +28,5 @@ This section documents all of the environment variables that are currently avail
 | `CACHE_CANONICAL_ENABLED`  | Whether caching of canonical resources is enabled                    | `true`                               | `true` \| `false`                |
 | `CACHE_CANONICAL_SIZE`     | Size (in items) of the canonical resource cache                      | `200000`                             |                                  |
 | `SNOMEDCT_DEFAULT_EDITION` | Default edition of SNOMED                                            | `900000000000207008` (international) | `83821000000107`: UK Edition     |
+
+</div>
