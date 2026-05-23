@@ -18,7 +18,7 @@ Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSy
 | `CodeSystem/$find-matches`  | Given a set of properties (and text), return one or more possible matching codes. See [docs](https://www.hl7.org/fhir/codesystem-operation-find-matches.html) | ❌       |
 | `ValueSet/$expand`          | Returns an expansion of concepts according to the value set definition. See [docs](https://www.hl7.org/fhir/valueset-operation-expand.html)                   | ✅       |
 | `ValueSet/$validate-code`   | Validate that a coded value is in the set of codes allowed by a value set. See [docs](https://www.hl7.org/fhir/valueset-operation-validate-code.html)         | ✅       |
-| `ConceptMap/$translate`     | Translate a code from one terminology to another. See [docs](https://www.hl7.org/fhir/conceptmap-operation-translate.html)                                    | 🏗️     |
+| `ConceptMap/$translate`     | Translate a code from one terminology to another. See [docs](https://www.hl7.org/fhir/conceptmap-operation-translate.html)                                    | ✅       |
 | `ConceptMap/$closure`       | Maintenance of a client-side transitive closure table. See [docs](https://www.hl7.org/fhir/conceptmap-operation-closure.html)                                 | ❌       |
 
 ## Features
@@ -45,8 +45,8 @@ Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSy
 | Nested concepts                              | Hierarchy via `concept.concept`                                 | ✅       |
 | Supplemental CodeSystems                     | Additional concept properties and designations                  | 🏗️     |
 | Implicit ValueSets                           | System-generated ValueSets                                      | ✅       |
-| ConceptMap translations                      | Code mapping between terminology systems                        | 🏗️     |
-| Multiple ConceptMap matches                  | Returns all applicable mappings for source code                 | 🏗️     |
+| ConceptMap translations                      | Code mapping between terminology systems                        | ✅       |
+| Multiple ConceptMap matches                  | Returns all applicable mappings for source code                 | ✅       |
 | Transitive closure table                     | `$closure`                                                      | ❌       |
 | Syntax-based code systems                    | UCUM, BCP-47, HGVS, etc                                         | ❌       |
 | `tx-resource` parameter                      | Inline resource definitions                                     | ✅       |

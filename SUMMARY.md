@@ -29,8 +29,9 @@
 * [CRUD](CRUD/README.md)
   * [CodeSystem](CRUD/CodeSystem.md)
   * [ValueSet](CRUD/ValueSet.md)
+  * [ConceptMap](CRUD/ConceptMap.md)
 * [RxNorm Guide](guides/rxnorm.md)
-* [SNOMED Guide](guides/snomed.md)
+* [SNOMED guide](guides/snomed.md)
 
 ## Misc
 

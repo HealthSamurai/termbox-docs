@@ -134,6 +134,139 @@ GET /fhir/ValueSet/$expand?url=http://snomed.info/sct?fhir_vs=isa/404684003&filt
 }
 ```
 
+## Translating a SNOMED code to ICD-O-3
+
+Translating `10024003 | Upper lobe of lung` to its ICD-O-3 equivalent:
+
+```http
+POST /fhir/ConceptMap/$translate
+Content-Type: application/json
+```
+
+```json
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "sourceCode",   "valueCode": "10024003" },
+    { "name": "sourceSystem", "valueUri":  "http://snomed.info/sct" },
+    { "name": "targetSystem", "valueUri":  "http://terminology.hl7.org/CodeSystem/icd-o-3" }
+  ]
+}
+```
+
+```json
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    {
+      "name": "result",
+      "valueBoolean": true
+    },
+    {
+      "name": "match",
+      "part": [
+        {
+          "name": "relationship",
+          "valueCode": "equivalent"
+        },
+        {
+          "name": "concept",
+          "valueCoding": {
+            "system": "http://terminology.hl7.org/CodeSystem/icd-o-3",
+            "code": "C34.3",
+            "display": "Upper lobe, bronchus or lung"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Translating across all known maps
+
+Omitting `targetSystem` returns matches from every ConceptMap that covers the source code. Here `2681003 | Peripheral nerve of thigh` maps to both CTV3 and ICD-O-3:
+
+```http
+POST /fhir/ConceptMap/$translate
+Content-Type: application/json
+```
+
+```json
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "sourceCode",   "valueCode": "2681003" },
+    { "name": "sourceSystem", "valueUri":  "http://snomed.info/sct" }
+  ]
+}
+```
+
+```json
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    {
+      "name": "result",
+      "valueBoolean": true
+    },
+    {
+      "name": "match",
+      "part": [
+        { "name": "relationship", "valueCode": "equivalent" },
+        { "name": "concept", "valueCoding": { "system": "http://read.info/ctv3", "code": "XUAec" } }
+      ]
+    },
+    {
+      "name": "match",
+      "part": [
+        { "name": "relationship", "valueCode": "equivalent" },
+        { "name": "concept", "valueCoding": { "system": "http://terminology.hl7.org/CodeSystem/icd-o-3", "code": "C47.5" } }
+      ]
+    }
+  ]
+}
+```
+
+## Translating using an implicit ConceptMap
+
+Pass the `url` parameter with a SNOMED implicit ConceptMap URL to target a specific map. Here we use the CTV3 map (`fhir_cm=900000000000497000`):
+
+```http
+POST /fhir/ConceptMap/$translate
+Content-Type: application/json
+```
+
+```json
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "url",          "valueUri":  "http://snomed.info/sct?fhir_cm=900000000000497000" },
+    { "name": "sourceCode",   "valueCode": "154938001" },
+    { "name": "sourceSystem", "valueUri":  "http://snomed.info/sct" }
+  ]
+}
+```
+
+```json
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    {
+      "name": "result",
+      "valueBoolean": true
+    },
+    {
+      "name": "match",
+      "part": [
+        { "name": "relationship", "valueCode": "equivalent" },
+        { "name": "concept", "valueCoding": { "system": "http://read.info/ctv3", "code": ".E4D4" } }
+      ]
+    }
+  ]
+}
+```
+
 ## Searching on an ad-hoc value set
 
 We'll search now based on two property filters:
