@@ -7,9 +7,7 @@ The example below creates a CodeSystem with a three-level concept hierarchy, cus
 ```http
 POST http://localhost:3000/fhir/CodeSystem
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "CodeSystem",
   "language": "en",

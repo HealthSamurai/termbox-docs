@@ -141,9 +141,7 @@ Translating `10024003 | Upper lobe of lung` to its ICD-O-3 equivalent:
 ```http
 POST /fhir/ConceptMap/$translate
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "Parameters",
   "parameter": [
@@ -190,9 +188,7 @@ Omitting `targetSystem` returns matches from every ConceptMap that covers the so
 ```http
 POST /fhir/ConceptMap/$translate
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "Parameters",
   "parameter": [
@@ -235,9 +231,7 @@ Pass the `url` parameter with a SNOMED implicit ConceptMap URL to target a speci
 ```http
 POST /fhir/ConceptMap/$translate
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "Parameters",
   "parameter": [
@@ -275,9 +269,10 @@ We'll search now based on two property filters:
 - `363698007 | findign site` = `113255004 | lung`
 - and the text `fever`
 
-```json
+```http
 POST /fhir/ValueSet/$expand
 Content-Type: application/json
+
 {
   "resourceType": "Parameters",
   "parameter": [{

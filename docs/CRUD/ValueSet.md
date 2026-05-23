@@ -7,9 +7,7 @@ The example below creates a ValueSet that selects three concepts from an existin
 ```http
 POST http://localhost:3000/fhir/ValueSet
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "ValueSet",
   "url": "http://example.org/ValueSet/vs1",

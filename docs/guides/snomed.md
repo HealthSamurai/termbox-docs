@@ -35,9 +35,7 @@ Use the `url` parameter in `$translate` to target a specific map:
 ```http
 POST /fhir/ConceptMap/$translate
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "Parameters",
   "parameter": [
@@ -53,9 +51,7 @@ Omit `url` and pass only `sourceSystem` + `targetSystem` to let the server find 
 ```http
 POST /fhir/ConceptMap/$translate
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "Parameters",
   "parameter": [

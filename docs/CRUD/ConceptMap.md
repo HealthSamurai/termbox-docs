@@ -7,9 +7,7 @@ The example below creates a ConceptMap that maps two local condition codes to th
 ```http
 POST http://localhost:3000/fhir/ConceptMap
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "ConceptMap",
   "url": "http://example.org/ConceptMap/cm1",
@@ -77,9 +75,7 @@ Content-Type: application/json; charset=utf-8
 ```http
 POST http://localhost:3000/fhir/ConceptMap/$translate
 Content-Type: application/json
-```
 
-```json
 {
   "resourceType": "Parameters",
   "parameter": [
