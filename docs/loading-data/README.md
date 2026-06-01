@@ -17,6 +17,7 @@ These mechanisms allow Termbox to retrieve data from a variety of source types:
 | Termbox Gallery       | Curated repository of terminologies, referenced by canonical URL                                                                                           | ✅ Supported           |
 | FHIR Package registry | Ability to download packages (and dependencies) from registries such as: packages2, Simplifier, get-ig.org                                                 | ✅️ Supported           |
 | Syndication Feeds     | As described in the [NCTS Syndication feed spec](https://www.healthterminologies.gov.au/specs/v3/conformant-server-apps/syndication-api/syndication-feed/) | ✅️️ Supported           |
+| Local FHIR resource   | A single CodeSystem, ValueSet, or ConceptMap resource in a local JSON file                                                                                 | ✅ Supported           |
 | FHIR CRUD API         | Live authoring FHIR resources via API                                                                                                                      | ⚠️ Partially supported |
 
 ## Loading data via configuration file
@@ -55,7 +56,7 @@ services:
 
 Termbox will load and index all configured sources on startup. The optional `sync: true` (default: `false`) field enables synchronization mode: previously loaded content that is no longer listed in the file will be removed on startup.
 
-Each entry in `sources` specifies a `type` and type-specific fields. The available source types are [npm](npm.md), [gallery](gallery.md), [bundle](bundle.md), and [atom](atom.md).
+Each entry in `sources` specifies a `type` and type-specific fields. The available source types are [npm](npm.md), [package](package.md), [resource](resource.md), [gallery](gallery.md), [bundle](bundle.md), and [atom](atom.md).
 
 ## Loading data via UI
 

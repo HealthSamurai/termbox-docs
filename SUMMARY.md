@@ -8,6 +8,7 @@
 * [Loading Data](loading-data/README.md)
   * [NPM](loading-data/npm.md)
   * [Package](loading-data/package.md)
+  * [Resource](loading-data/resource.md)
   * [Termbox Gallery](loading-data/gallery.md)
   * [FHIR Bundle](loading-data/bundle.md)
   * [Atom Feed](loading-data/atom.md)
