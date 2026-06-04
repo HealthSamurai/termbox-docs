@@ -2,11 +2,11 @@
 
 Loads a FHIR package from a package registry or from a local `.tgz` archive. Either `package` or `location` must be specified.
 
-| Field      | Optional | Description                                             |
-| ---------- | -------- | ------------------------------------------------------- |
-| `package`  | yes      | Package name (required when not using `location`)       |
-| `version`  | yes      | Package version; omit to use the latest (registry only) |
-| `location` | yes      | Path to a local `.tgz` package archive (required when not using `package`) |
+| Field          | Optional | Description                                             |
+| -------------- | -------- | ------------------------------------------------------- |
+| `package`      | no       | Package name                                            |
+| `version`      | yes      | Package version; omit to use the latest                 |
+| `dependencies` | yes      | Controls transitive dependency loading (see below)      |
 
 ## Registry
 
@@ -21,12 +21,41 @@ sources:
     version: 4.0.1
 ```
 
-## Local archive
+## Dependency control
 
-Load a package from a local `.tgz` file. Relative paths are resolved from the Termbox root. Dependencies are not resolved automatically; each must be listed as a separate source entry.
+By default, Termbox recursively loads all transitive dependencies of a package. The `dependencies` field lets you opt out entirely or exclude specific packages.
+
+### Skip all dependencies
+
+Set `load: false` to load only the package itself, without pulling any of its dependencies:
 
 ```yaml
 sources:
   - type: npm
-    location: ../.tx-content/hl7.fhir.r4.core-4.0.1.tgz
+    package: hl7.fhir.us.davinci-pdex
+    version: 2.0.0
+    dependencies:
+      load: false
 ```
+
+### Exclude specific packages
+
+Use `exclude` to block specific packages from the dependency tree. Each entry requires a `package` name; `version` is optional — omitting it excludes that package regardless of version.
+
+```yaml
+sources:
+  - type: npm
+    package: hl7.fhir.us.core
+    dependencies:
+      exclude:
+        - package: hl7.fhir.uv.smart-app-launch
+          version: 2.2.0        # exclude this version only
+        - package: us.cdc.phinvads
+                                # no version — excludes all versions
+```
+
+| Field     | Optional | Description                                              |
+| --------- | -------- | -------------------------------------------------------- |
+| `package` | no       | Package name to exclude                                  |
+| `version` | yes      | Version to exclude; omit to exclude all versions         |
+
