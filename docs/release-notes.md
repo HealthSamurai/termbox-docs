@@ -1,5 +1,21 @@
 # Release Notes
 
+## 0.12.1
+
+- Multibranch valuesets pagination bug fixes
+
+## 0.12.0
+
+- $lookup: Support for accept-language HTTP header
+- data.yaml: New source type: resource
+- npm loader: Dependency control, see docs
+- paging: Configurable total behavior
+- Bug fixes and other enhancements
+
+## 0.11.1
+
+- Metrics endpoint and status codes fixes
+
 ## 0.11.0
 
 - Support for `ConceptMap` and `ConceptMap/$translate`
