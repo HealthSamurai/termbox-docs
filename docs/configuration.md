@@ -27,6 +27,7 @@ This section documents all of the environment variables that are currently avail
 | `HTTP_BASE_URL`            | Base url where termbox will be hosted (useful for outgoing links)    |                                      |                                  |
 | `CACHE_CANONICAL_ENABLED`  | Whether caching of canonical resources is enabled                    | `true`                               | `true` \| `false`                |
 | `CACHE_CANONICAL_SIZE`     | Size (in items) of the canonical resource cache                      | `200000`                             |                                  |
+| `FHIR_TOTAL_BEHAVIOR`      | Controls whether FHIR responses include calculated totals by default | `none`                               | `none` \| `calculate`            |
 | `SNOMEDCT_DEFAULT_EDITION` | Default edition of SNOMED                                            | `900000000000207008` (international) | `83821000000107`: UK Edition     |
 
 </div>
