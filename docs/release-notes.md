@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.12.2
+
+- Performance improvements on pagination
+- Fix memory leak on large data.yaml
+
 ## 0.12.1
 
 - Multibranch valuesets pagination bug fixes
