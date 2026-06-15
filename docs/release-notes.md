@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.13.0
+
+- Readonly mode and other toggles (ui, admin, fhir). See [docs](https://www.health-samurai.io/docs/termbox/configuration)
+- Several FHIR API and content conformance and alignment improvements.
+- Maybe fixes and enhancements.
+
 ## 0.12.2
 
 - Performance improvements on pagination
