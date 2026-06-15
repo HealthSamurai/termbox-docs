@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.13.1
+
+- Readonly mode fixes.
+- Include supplement bug fixes.
+
 ## 0.13.0
 
 - Readonly mode and other toggles (ui, admin, fhir). See [docs](https://www.health-samurai.io/docs/termbox/configuration)
