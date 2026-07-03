@@ -72,7 +72,7 @@ Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSy
 
 `POST /fhir/$x-multi-invoke`
 
-Invokes a supported FHIR operation over multiple entries in a single request. This is a Termbox-specific extension (indicated by the `x-` prefix) designed for high-throughput batch lookups that avoids the overhead of one HTTP request per entry.
+Invokes a FHIR operation over multiple entries in a single request. This operation allows for high-throughput batch invocation of supported operations.
 
 **Supported operations**
 
@@ -88,11 +88,11 @@ The request body is a FHIR `Parameters` resource with the following parameters:
 | ----------- | -------- | -------------------------------------------------------------------------------------------------------------- |
 | `operation` | `uri`    | The operation to invoke, e.g. `CodeSystem/$find-matches`.                                                      |
 | `shared`    | `part`   | Parameters shared across all entries. Parts: `system` (uri, required), `version` (string, optional).          |
-| `entry`     | `part[]` | One entry per lookup. Parts: `display` (string, required), `system` (uri, optional), `version` (string, optional). Entry-level `system` / `version` override the shared values. |
+| `entry`     | `part[]` | One entry per lookup. Parts: `display` (string, required), `system` (uri, optional), `version` (string, optional). Entry-level `system` / `version` overrides the shared values. |
 
 **Response**
 
-Returns a `Parameters` resource with one `entry` per input entry (in the same order). Each `entry.part` contains zero or more `match` elements, each with a single `code` part. An entry with no matching concept returns an empty `part` array.
+Returns a `Parameters` resource with one `entry` per input entry (in the same order). Each `entry.part` contains zero or more `match` elements. An entry with no matching concept returns an empty `part` array.
 
 **Example**
 
@@ -146,8 +146,6 @@ Content-Type: application/json
 ```
 {% endtab %}
 {% endtabs %}
-
-The response entries are in the same order as the request entries. The third entry returns an empty `part` array because the display text did not match any concept.
 
 {% hint style="info" %}
 Matching is exact and case-sensitive. Per-entry `system` and `version` parts can be used to look up across different code systems in a single request.
