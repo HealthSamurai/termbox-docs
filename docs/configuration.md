@@ -28,6 +28,7 @@ This section documents all of the environment variables that are currently avail
 | `CACHE_CANONICAL_ENABLED`  | Whether caching of canonical resources is enabled                                             | `true`                               | `true` \| `false`                |
 | `CACHE_CANONICAL_SIZE`     | Size (in items) of the canonical resource cache                                               | `200000`                             |                                  |
 | `FHIR_TOTAL_BEHAVIOR`      | Controls whether FHIR responses include calculated totals by default                          | `none`                               | `none` \| `calculate`            |
+| `FHIR_MULTI_INVOKE_BATCH_SIZE` | Number of patterns processed per database batch in `$x-multi-invoke` operations           | `6000`                               |                                  |
 | `SNOMEDCT_DEFAULT_EDITION` | Default edition of SNOMED                                                                     | `900000000000207008` (international) | `83821000000107`: UK Edition     |
 | `READONLY_MODE`            | Enables read-only mode: disables Admin API, UI ingest/delete routes, and FHIR write endpoints | `false`                              | `true` \| `false`                |
 | `UI_ENABLED`               | Enables the browser UI under `/ui`                                                            | `true`                               | `true` \| `false`                |
