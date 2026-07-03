@@ -6,7 +6,7 @@
 - Multi-invoke support for CodeSystem/$find-matches
 - FHIR search support for `name:contains` param
 - ConceptMap/$translate support for codeableConcept
-- ValueSet/$expand multi version (R4/R5)
+- Improved FHIR multi-version support (R4, R5, R6)
 - Canonicals resolution improvements
 - Bug fixes and general enhancements
 
