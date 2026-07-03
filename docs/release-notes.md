@@ -17,7 +17,7 @@
 
 ## 0.13.0
 
-- Readonly mode and other toggles (ui, admin, fhir). See [docs](https://www.health-samurai.io/docs/termbox/configuration)
+- Readonly mode and other toggles (ui, admin, fhir). See [docs](configuration.md)
 - Several FHIR API and content conformance and alignment improvements.
 - Maybe fixes and enhancements.
 
