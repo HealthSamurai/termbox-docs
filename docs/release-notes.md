@@ -1,5 +1,15 @@
 # Release Notes
 
+## 0.14.0
+
+- CodeSystem/$find-matches, basic support
+- Multi-invoke support for CodeSystem/$find-matches
+- FHIR search support for `name:contains` param
+- ConceptMap/$translate support for codeableConcept
+- ValueSet/$expand multi version (R4/R5)
+- Canonicals resolution improvements
+- Bug fixes and general enhancements
+
 ## 0.13.1
 
 - Readonly mode fixes.
