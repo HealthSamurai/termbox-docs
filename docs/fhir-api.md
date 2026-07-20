@@ -47,7 +47,8 @@ Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSy
 | ValueSet validation                          | Code membership validation                                      | ✅       |
 | ValueSet inclusion/exclusion                 | Deep set operations support                                     | ✅       |
 | Lookup displays, designation, and properties | All concept attributes                                          | ✅       |
-| Full text search filter                      | Prefix, stemming, phrase matching                               | ✅       |
+| Full text search filter              | Prefix, stemming, phrase matching | ✅       |
+| Fuzzy search               | Typo-tolerant text, enabled by default             | ✅       |
 | FTS ranking                                  | Full text search ranking based on relevance                     | ✅       |
 | Property filters                             | Property-based filtering: `=`, `in`, `regex`, etc               | ✅       |
 | Subsumption filtering                        | `is-a`, `generalizes`, `ancestors`, etc                         | ✅       |

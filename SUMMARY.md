@@ -21,6 +21,7 @@
 ## Reference
 
 * [FHIR API](fhir-api.md)
+* [Full Text Search](full-text-search.md)
 * [Configuration](configuration.md)
 * [Authentication and Authorization](auth.md)
 * [Troubleshooting](troubleshooting.md)
