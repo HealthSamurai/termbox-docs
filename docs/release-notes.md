@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.15.0
+
+- Fuzzy search support
+- Binary package, extensional valueset support
+- Performance improvements and bug fixes
+
 ## 0.14.0
 
 - CodeSystem/$find-matches, basic support
