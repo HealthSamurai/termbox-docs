@@ -22,8 +22,6 @@ Termbox currently supports Lakebase **Autoscaling** projects (`project` / `branc
 
 When `PG_DATABRICKS_HOST`, `PG_DATABRICKS_CLIENT_ID`, and `PG_DATABRICKS_CLIENT_SECRET` are set, Termbox resolves database credentials dynamically instead of using `PG_USER` / `PG_PASSWORD`. The resolved credential is cached and reused for new pooled connections until `PG_MAX_LIFETIME` elapses (default `3300000` ms / 55 minutes), at which point it's transparently refreshed. `PG_MAX_LIFETIME` should be kept below Databricks' token expiry (1 hour).
 
-### Prerequisites
-
 {% stepper %}
 {% step %}
 **Create a Lakebase project, branch, and endpoint**
@@ -33,31 +31,10 @@ In the Databricks workspace, set up a Lakebase Postgres project with a branch an
 {% step %}
 **Create a service principal**
 
-Create a [service principal](https://docs.databricks.com/aws/en/admin/users-groups/service-principals) with an OAuth secret. Note its client ID and client secret.
-
-Register the service principal as a Postgres role.
+Create a [service principal](https://docs.databricks.com/aws/en/admin/users-groups/service-principals) with an OAuth secret. Note its client ID and client secret. And register the service principal as a Postgres role.
 {% endstep %}
 {% step %}
 **Configure termbox**
-
-Set the environment variables below and start termbox.
-{% endstep %}
-{% endstepper %}
-
-### Configuration
-
-| Env var                       | Description                                                                                |
-| ----------------------------- | ------------------------------------------------------------------------------------------ |
-| `PG_HOST`                     | Lakebase Postgres host, from the endpoint's **Connect** tab                                |
-| `PG_PORT`                     | Lakebase Postgres port (`5432`)                                                            |
-| `PG_DATABASE`                 | Target database name                                                                       |
-| `PG_DATABRICKS_HOST`          | Databricks workspace URL, e.g. `https://<workspace>.cloud.databricks.com`                  |
-| `PG_DATABRICKS_PROJECT`       | Lakebase project ID                                                                        |
-| `PG_DATABRICKS_BRANCH`        | Lakebase branch ID                                                                         |
-| `PG_DATABRICKS_ENDPOINT`      | Lakebase endpoint ID                                                                       |
-| `PG_DATABRICKS_CLIENT_ID`     | Service principal client ID (also used as the Postgres username)                           |
-| `PG_DATABRICKS_CLIENT_SECRET` | Service principal client secret                                                            |
-| `PG_MAX_LIFETIME`             | How long a resolved credential and pooled connection are reused, in ms (default `3300000`) |
 
 ```shell
 PG_HOST=<instance>.database.cloud.databricks.com
@@ -70,6 +47,10 @@ PG_DATABRICKS_ENDPOINT=primary
 PG_DATABRICKS_CLIENT_ID=<service-principal-client-id>
 PG_DATABRICKS_CLIENT_SECRET=<service-principal-client-secret>
 ```
+{% endstep %}
+{% endstepper %}
+
+
 
 {% hint style="info" %}
 `PG_USER` and `PG_PASSWORD` are ignored once the `PG_DATABRICKS_*` variables above are set — termbox falls back to them only when Databricks credentials aren't configured.
