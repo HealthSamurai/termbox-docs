@@ -14,13 +14,13 @@ Some managed PostgreSQL instances require special authentication methods.
 
 ## Databricks Lakebase Postgres
 
-[Lakebase](https://docs.databricks.com/aws/en/oltp/) is Databricks' managed, autoscaling Postgres offering, organized into projects, branches, and endpoints. Instead of a static password, termbox authenticates to Lakebase as a [service principal](https://docs.databricks.com/aws/en/admin/users-groups/service-principals) using short-lived OAuth-issued database credentials.
+[Lakebase](https://docs.databricks.com/aws/en/oltp/) is Databricks' managed, autoscaling Postgres offering, organized into projects, branches, and endpoints. Instead of a static password, Termbox authenticates to Lakebase as a [service principal](https://docs.databricks.com/aws/en/admin/users-groups/service-principals) using short-lived OAuth-issued database credentials.
 
 {% hint style="info" %}
 Termbox currently supports Lakebase **Autoscaling** projects (`project` / `branch` / `endpoint`). Since March 2026, new Lakebase instances are created as **Autoscaling**, and existing [*Provisioned*](https://docs.databricks.com/aws/en/oltp/instances/) instances are being upgraded to **Autoscaling** starting June 2026 — for that reason, **Provisioned** instances are not supported in Termbox.
 {% endhint %}
 
-When `PG_DATABRICKS_HOST`, `PG_DATABRICKS_CLIENT_ID`, and `PG_DATABRICKS_CLIENT_SECRET` are set, termbox resolves database credentials dynamically instead of using `PG_USER` / `PG_PASSWORD`. The resolved credential is cached and reused for new pooled connections until `PG_MAX_LIFETIME` elapses (default `3300000` ms / 55 minutes), at which point it's transparently refreshed. `PG_MAX_LIFETIME` should be kept below Databricks' token expiry (1 hour).
+When `PG_DATABRICKS_HOST`, `PG_DATABRICKS_CLIENT_ID`, and `PG_DATABRICKS_CLIENT_SECRET` are set, Termbox resolves database credentials dynamically instead of using `PG_USER` / `PG_PASSWORD`. The resolved credential is cached and reused for new pooled connections until `PG_MAX_LIFETIME` elapses (default `3300000` ms / 55 minutes), at which point it's transparently refreshed. `PG_MAX_LIFETIME` should be kept below Databricks' token expiry (1 hour).
 
 ### Prerequisites
 
