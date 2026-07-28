@@ -23,6 +23,7 @@
 * [FHIR API](fhir-api.md)
 * [Full Text Search](full-text-search.md)
 * [Configuration](configuration.md)
+* [Running Termbox on Managed PostgreSQL](managed-postgresql.md)
 * [Authentication and Authorization](auth.md)
 * [Troubleshooting](troubleshooting.md)
 
