@@ -4,3 +4,4 @@
 redirects:
   crud: CRUD/README.md
   loading-data: loading-data/README.md
+  fhir-api#x-multi-invoke: custom-operations/multi-invoke.md

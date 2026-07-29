@@ -21,6 +21,8 @@
 ## Reference
 
 * [FHIR API](fhir-api.md)
+  * [Custom Operations](custom-operations/README.md)
+    * [Multi-Invoke](custom-operations/multi-invoke.md)
 * [Full Text Search](full-text-search.md)
 * [Configuration](configuration.md)
 * [Running Termbox on Managed PostgreSQL](managed-postgresql.md)
