@@ -18,27 +18,34 @@
 * [Architecture](architecture.md)
 * [Model](model.md)
 
-## Reference
+## Terminology Resources
 
-* [Capabilities](capabilities.md)
-* [FHIR Operations](fhir-operations.md)
-  * [CodeSystem/$lookup](standard-operations/codesystem-lookup.md)
-  * [CodeSystem/$validate-code](standard-operations/codesystem-validate-code.md)
-  * [CodeSystem/$subsumes](standard-operations/codesystem-subsumes.md)
-  * [CodeSystem/$find-matches](standard-operations/codesystem-find-matches.md)
-  * [ValueSet/$expand](standard-operations/valueset-expand.md)
-  * [ValueSet/$validate-code](standard-operations/valueset-validate-code.md)
-  * [ConceptMap/$translate](standard-operations/conceptmap-translate.md)
-  * [Extensions](extensions/README.md)
-    * [$x-multi-invoke](extensions/multi-invoke.md)
 * [CodeSystem](CRUD/CodeSystem.md)
 * [ValueSet](CRUD/ValueSet.md)
 * [ConceptMap](CRUD/ConceptMap.md)
-* [Full Text Search](full-text-search.md)
-* [Running Termbox on Managed PostgreSQL](managed-postgresql.md)
-* [Authentication and Authorization](auth.md)
+
+## FHIR Operations
+
+* [Overview](fhir-operations.md)
+* [CodeSystem/$lookup](standard-operations/codesystem-lookup.md)
+* [CodeSystem/$validate-code](standard-operations/codesystem-validate-code.md)
+* [CodeSystem/$subsumes](standard-operations/codesystem-subsumes.md)
+* [CodeSystem/$find-matches](standard-operations/codesystem-find-matches.md)
+* [ValueSet/$expand](standard-operations/valueset-expand.md)
+* [ValueSet/$validate-code](standard-operations/valueset-validate-code.md)
+* [ConceptMap/$translate](standard-operations/conceptmap-translate.md)
+* [Extensions](extensions/README.md)
+  * [$x-multi-invoke](extensions/multi-invoke.md)
+
+
+## Reference
+
+* [Capabilities](capabilities.md)
 * [Configuration](configuration.md)
 * [Licensing](licensing.md)
+* [Full Text Search](full-text-search.md)
+* [Termbox on Managed PostgreSQL](managed-postgresql.md)
+* [Authentication and Authorization](auth.md)
 * [Troubleshooting](troubleshooting.md)
 
 ## Misc
