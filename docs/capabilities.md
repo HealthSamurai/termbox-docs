@@ -1,6 +1,6 @@
 # Capabilities
 
-Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSystems[^4].
+Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSystems.
 
 {% hint style="info" %}
 **Support Legend**
@@ -9,20 +9,6 @@ Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSy
 - ❌ No support - In our roadmap
 - 🚫 Won't support - Not in our roadmap
 {% endhint %}
-
-## Operations
-
-| Operation                   | Description                                                       | Support |
-| --------------------------- | ----------------------------------------------------------------- | ------- |
-| `CodeSystem/$lookup`        | Given a code/system, get additional details about the concept.    | ✅       |
-| `CodeSystem/$validate-code` | Validates a coded value.                                          | ✅       |
-| `CodeSystem/$subsumes`      | Test the subsumption relationship between A and B.                | ✅       |
-| `CodeSystem/$find-matches`  | Given a set of properties (and text), return matching codes.      | ✅       |
-| `ValueSet/$expand`          | Returns an expansion according to the value set definition.       | ✅       |
-| `ValueSet/$validate-code`   | Validate that a coded value is in the allowed value set codes.    | ✅       |
-| `ConceptMap/$translate`     | Translate a code from one terminology to another.                 | ✅       |
-| `ConceptMap/$closure`       | Maintenance of a client-side transitive closure table.            | ❌       |
-| `/$x-multi-invoke`          | Invoke a supported operation over multiple entries in one request. | ✅       |
 
 ## Features
 
@@ -70,13 +56,28 @@ Termbox supports the [FHIR REST API](https://hl7.org/fhir/http.html) for managin
 | Delete      | [DELETE /[type]/[id]](https://hl7.org/fhir/http.html#delete) | ✅          | ✅        | ✅          |
 | Search      | [GET    /[type]](https://hl7.org/fhir/http.html#search)      |            |          |            |
 
+## Operations
+
+| Operation                   | Description                                                       | Support |
+| --------------------------- | ----------------------------------------------------------------- | ------- |
+| `CodeSystem/$lookup`        | Given a code/system, get additional details about the concept.    | ✅       |
+| `CodeSystem/$validate-code` | Validates a coded value.                                          | ✅       |
+| `CodeSystem/$subsumes`      | Test the subsumption relationship between A and B.                | ✅       |
+| `CodeSystem/$find-matches`  | Given a set of properties (and text), return matching codes.      | ✅       |
+| `ValueSet/$expand`          | Returns an expansion according to the value set definition.       | ✅       |
+| `ValueSet/$validate-code`   | Validate that a coded value is in the allowed value set codes.    | ✅       |
+| `ConceptMap/$translate`     | Translate a code from one terminology to another.                 | ✅       |
+| `ConceptMap/$closure`       | Maintenance of a client-side transitive closure table.            | ❌       |
+| `/$x-multi-invoke`          | Invoke a supported operation over multiple entries in one request. | ✅       |
+
 ## FHIR Versions
 
-Termbox runs one endpoint for each major FHIR version[^5] and a default endpoint (currently R5, users will be able to configure this in upcoming releases)
+Termbox runs one endpoint for each major FHIR version and a default endpoint (currently R5, users will be able to configure this in upcoming releases)
 
 - Default: `/fhir/`
 - Version specific: `/fhir/:version/`
 
 Examples:
+- R4: `GET /fhir/r4/metadata`
 - R6: `GET /fhir/r6/ValueSet/$expand`
 - R4B: `GET /fhir/r4b/metadata`
