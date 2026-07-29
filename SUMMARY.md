@@ -38,16 +38,16 @@
 * [Running Termbox on Managed PostgreSQL](managed-postgresql.md)
 * [Authentication and Authorization](auth.md)
 * [Configuration](configuration.md)
+* [Licensing](licensing.md)
 * [Troubleshooting](troubleshooting.md)
+
+## Misc
+
+* [Performance](performance.md)
+* [Release Notes](release-notes.md)
 
 ## Guides
 
 * [Examples](examples.md)
 * [RxNorm Guide](guides/rxnorm.md)
 * [SNOMED guide](guides/snomed.md)
-
-## Misc
-
-* [Performance](performance.md)
-* [Licensing](licensing.md)
-* [Release Notes](release-notes.md)
