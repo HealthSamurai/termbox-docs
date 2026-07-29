@@ -33,7 +33,7 @@ The following ConceptMaps are loaded with SNOMED CT International:
 Use the `url` parameter in `$translate` to target a specific map:
 
 ```http
-POST /fhir/ConceptMap/$translate
+POST /ConceptMap/$translate
 Content-Type: application/json
 
 {
@@ -49,7 +49,7 @@ Content-Type: application/json
 Omit `url` and pass only `sourceSystem` + `targetSystem` to let the server find the right map automatically:
 
 ```http
-POST /fhir/ConceptMap/$translate
+POST /ConceptMap/$translate
 Content-Type: application/json
 
 {

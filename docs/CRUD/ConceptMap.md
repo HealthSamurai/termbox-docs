@@ -5,7 +5,7 @@
 The example below creates a ConceptMap that maps two local condition codes to their SNOMED CT equivalents.
 
 ```http
-POST http://localhost:3000/fhir/ConceptMap
+POST /ConceptMap
 Content-Type: application/json
 
 {
@@ -52,7 +52,7 @@ The response includes a `Location` header pointing to the newly created resource
 
 ```http
 HTTP/1.1 201 Created
-Location: http://localhost:3000/fhir/ConceptMap/d528f194-091b-4ec7-ab21-dcfead860d2c
+Location: /ConceptMap/d528f194-091b-4ec7-ab21-dcfead860d2c
 Content-Type: application/json; charset=utf-8
 ```
 
@@ -70,61 +70,14 @@ Content-Type: application/json; charset=utf-8
 
 ## Translate
 
-[$translate](https://hl7.org/fhir/conceptmap-operation-translate.html) translates a code using the newly created ConceptMap. Pass the ConceptMap `url` to target it explicitly.
-
-```http
-POST http://localhost:3000/fhir/ConceptMap/$translate
-Content-Type: application/json
-
-{
-  "resourceType": "Parameters",
-  "parameter": [
-    { "name": "url",          "valueUri":  "http://example.org/ConceptMap/cm1" },
-    { "name": "sourceCode",   "valueCode": "DM" },
-    { "name": "sourceSystem", "valueUri":  "http://example.org/CodeSystem/local-conditions" }
-  ]
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-```
-
-```json
-{
-  "resourceType": "Parameters",
-  "parameter": [
-    {
-      "name": "result",
-      "valueBoolean": true
-    },
-    {
-      "name": "match",
-      "part": [
-        {
-          "name": "concept",
-          "valueCoding": {
-            "system": "http://snomed.info/sct",
-            "code": "73211009"
-          }
-        },
-        {
-          "name": "relationship",
-          "valueCode": "equivalent"
-        }
-      ]
-    }
-  ]
-}
-```
+Use [`ConceptMap/$translate`](../standard-operations/conceptmap-translate.md) to translate a code using the newly created ConceptMap.
 
 ## Delete
 
 [Deleting](https://hl7.org/fhir/http.html#delete) a ConceptMap removes the resource and all its mappings from the server.
 
 ```http
-DELETE http://localhost:3000/fhir/ConceptMap/d528f194-091b-4ec7-ab21-dcfead860d2c
+DELETE /ConceptMap/d528f194-091b-4ec7-ab21-dcfead860d2c
 ```
 
 ```http

@@ -5,7 +5,7 @@
 The example below creates a CodeSystem with a three-level concept hierarchy, custom properties, and multi-language designations.
 
 ```http
-POST http://localhost:3000/fhir/CodeSystem
+POST /CodeSystem
 Content-Type: application/json
 
 {
@@ -96,7 +96,7 @@ The response includes a `Location` header pointing to the newly created resource
 
 ```http
 HTTP/1.1 201 Created
-Location: http://localhost:3000/fhir/CodeSystem/d528f194-091b-4ec7-ab21-dcfead860d2c
+Location: /CodeSystem/d528f194-091b-4ec7-ab21-dcfead860d2c
 Content-Type: application/json; charset=utf-8
 ```
 
@@ -146,114 +146,14 @@ Content-Type: application/json; charset=utf-8
 
 ## Lookup a Concept
 
-[$lookup](https://hl7.org/fhir/codesystem-operation-lookup.html) resolves a code against the newly created CodeSystem and returns its display, designations, and properties.
-
-```http
-GET http://localhost:3000/fhir/CodeSystem/$lookup?system=http://example.org/CodeSystem/cs1&code=code1&property=prop
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-```
-
-```json
-{
-  "resourceType": "Parameters",
-  "parameter": [
-    {
-      "name": "code",
-      "valueCode": "code1"
-    },
-    {
-      "name": "display",
-      "valueString": "Display 1"
-    },
-    {
-      "name": "name",
-      "valueString": "ExampleCodeSystem"
-    },
-    {
-      "name": "system",
-      "valueUri": "http://example.org/CodeSystem/cs1"
-    },
-    {
-      "name": "abstract",
-      "valueBoolean": false
-    },
-    {
-      "name": "version",
-      "valueString": "0.1.0"
-    },
-    {
-      "name": "designation",
-      "part": [
-        {
-          "name": "language",
-          "valueCode": "en"
-        },
-        {
-          "name": "use",
-          "valueCoding": {
-            "system": "http://terminology.hl7.org/CodeSystem/hl7TermMaintInfra",
-            "code": "preferredForLanguage"
-          }
-        },
-        {
-          "name": "value",
-          "valueString": "Display 1"
-        }
-      ]
-    },
-    {
-      "name": "designation",
-      "part": [
-        {
-          "name": "language",
-          "valueCode": "de-DE"
-        },
-        {
-          "name": "value",
-          "valueString": "Anzeige 1"
-        }
-      ]
-    },
-    {
-      "name": "property",
-      "part": [
-        {
-          "name": "code",
-          "valueCode": "prop"
-        },
-        {
-          "name": "value",
-          "valueCode": "old"
-        }
-      ]
-    },
-    {
-      "name": "property",
-      "part": [
-        {
-          "name": "code",
-          "valueCode": "inactive"
-        },
-        {
-          "name": "value",
-          "valueBoolean": false
-        }
-      ]
-    }
-  ]
-}
-```
+Use [`CodeSystem/$lookup`](../standard-operations/codesystem-lookup.md) to resolve a code against the newly created CodeSystem and return its display, designations, and properties.
 
 ## Delete
 
 [Deleting](https://hl7.org/fhir/http.html#delete) a CodeSystem removes the resource and all its concepts from the server.
 
 ```http
-DELETE http://localhost:3000/fhir/CodeSystem/d528f194-091b-4ec7-ab21-dcfead860d2c
+DELETE /CodeSystem/d528f194-091b-4ec7-ab21-dcfead860d2c
 ```
 
 ```http

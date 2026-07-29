@@ -5,7 +5,7 @@ For these examples we assume THO and SNOMED International are loaded.
 ## Lookup a code in a code system
 
 ```http
-GET /fhir/CodeSystem/$lookup?system=http://snomed.info/sct&code=73211009
+GET /CodeSystem/$lookup?system=http://snomed.info/sct&code=73211009
 ```
 
 ```json
@@ -37,7 +37,7 @@ GET /fhir/CodeSystem/$lookup?system=http://snomed.info/sct&code=73211009
 Validating that `73211009 | Diabetes mellitus` is valid for SNOMED
 
 ```http
-GET /fhir/CodeSystem/$validate-code?url=http://snomed.info/sct&code=73211009
+GET /CodeSystem/$validate-code?url=http://snomed.info/sct&code=73211009
 ```
 
 ```json
@@ -73,7 +73,7 @@ GET /fhir/CodeSystem/$validate-code?url=http://snomed.info/sct&code=73211009
 Here we're validating that code `38341003` is valid in the implicit value set `http://snomed.info/sct?fhir_vs=isa/404684003`, which is, the value set of all SNOMED concepts that _are a_ `404684003 | Clinical finding`
 
 ```http
-GET /fhir/ValueSet/$validate-code?url=http://snomed.info/sct?fhir_vs=isa/404684003&code=38341003&inferSystem=true
+GET /ValueSet/$validate-code?url=http://snomed.info/sct?fhir_vs=isa/404684003&code=38341003&inferSystem=true
 ```
 
 ```json
@@ -109,7 +109,7 @@ GET /fhir/ValueSet/$validate-code?url=http://snomed.info/sct?fhir_vs=isa/4046840
 Here we're searching for the words "heart failure risk" on the implicit value set from the previous example (findings), top 10 results.
 
 ```http
-GET /fhir/ValueSet/$expand?url=http://snomed.info/sct?fhir_vs=isa/404684003&filter=heart+failure+risk&count=10
+GET /ValueSet/$expand?url=http://snomed.info/sct?fhir_vs=isa/404684003&filter=heart+failure+risk&count=10
 ```
 
 ```json
@@ -139,7 +139,7 @@ GET /fhir/ValueSet/$expand?url=http://snomed.info/sct?fhir_vs=isa/404684003&filt
 Translating `10024003 | Upper lobe of lung` to its ICD-O-3 equivalent:
 
 ```http
-POST /fhir/ConceptMap/$translate
+POST /ConceptMap/$translate
 Content-Type: application/json
 
 {
@@ -186,7 +186,7 @@ Content-Type: application/json
 Omitting `targetSystem` returns matches from every ConceptMap that covers the source code. Here `2681003 | Peripheral nerve of thigh` maps to both CTV3 and ICD-O-3:
 
 ```http
-POST /fhir/ConceptMap/$translate
+POST /ConceptMap/$translate
 Content-Type: application/json
 
 {
@@ -229,7 +229,7 @@ Content-Type: application/json
 Pass the `url` parameter with a SNOMED implicit ConceptMap URL to target a specific map. Here we use the CTV3 map (`fhir_cm=900000000000497000`):
 
 ```http
-POST /fhir/ConceptMap/$translate
+POST /ConceptMap/$translate
 Content-Type: application/json
 
 {
@@ -270,7 +270,7 @@ We'll search now based on two property filters:
 - and the text `fever`
 
 ```http
-POST /fhir/ValueSet/$expand
+POST /ValueSet/$expand
 Content-Type: application/json
 
 {

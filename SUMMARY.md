@@ -21,8 +21,15 @@
 ## Reference
 
 * [FHIR API](fhir-api.md)
+  * [CodeSystem/$lookup](standard-operations/codesystem-lookup.md)
+  * [CodeSystem/$validate-code](standard-operations/codesystem-validate-code.md)
+  * [CodeSystem/$subsumes](standard-operations/codesystem-subsumes.md)
+  * [CodeSystem/$find-matches](standard-operations/codesystem-find-matches.md)
+  * [ValueSet/$expand](standard-operations/valueset-expand.md)
+  * [ValueSet/$validate-code](standard-operations/valueset-validate-code.md)
+  * [ConceptMap/$translate](standard-operations/conceptmap-translate.md)
   * [Custom Operations](custom-operations/README.md)
-    * [$multi-invoke](custom-operations/multi-invoke.md)
+    * [$x-multi-invoke](custom-operations/multi-invoke.md)
 * [Full Text Search](full-text-search.md)
 * [Configuration](configuration.md)
 * [Running Termbox on Managed PostgreSQL](managed-postgresql.md)
