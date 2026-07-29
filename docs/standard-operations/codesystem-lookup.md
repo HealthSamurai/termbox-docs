@@ -12,6 +12,8 @@ Returns a FHIR `Parameters` resource. Common output parameters include `code`, `
 
 ## Example
 
+This example resolves a code from the CodeSystem created in the CodeSystem CRUD guide and asks for the custom `prop` property.
+
 {% tabs %}
 {% tab title="GET Request" %}
 ```http
@@ -95,3 +97,60 @@ Content-Type: application/json; charset=utf-8
 {% hint style="info" %}
 This example uses the CodeSystem created in the [CodeSystem CRUD guide](../CRUD/CodeSystem.md).
 {% endhint %}
+
+## SNOMED CT lookup example
+
+This example resolves the SNOMED CT code `73211009` and returns its display and system metadata.
+
+{% tabs %}
+{% tab title="GET Request" %}
+```http
+GET /CodeSystem/$lookup?system=http://snomed.info/sct&code=73211009
+Accept: application/fhir+json
+```
+{% endtab %}
+
+{% tab title="POST Request" %}
+```http
+POST /CodeSystem/$lookup
+Content-Type: application/fhir+json
+Accept: application/fhir+json
+
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "system", "valueUri": "http://snomed.info/sct" },
+    { "name": "code", "valueCode": "73211009" }
+  ]
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+
+```json
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "code", "valueCode": "73211009" },
+    { "name": "display", "valueString": "Diabetes mellitus" },
+    { "name": "name", "valueString": "snomed-ct" },
+    { "name": "system", "valueUri": "http://snomed.info/sct" },
+    { "name": "abstract", "valueBoolean": false },
+    { "name": "version", "valueString": "http://snomed.info/sct/900000000000207008/version/20260701" },
+    {
+      "name": "property",
+      "part": [
+        { "name": "code", "valueCode": "inactive" },
+        { "name": "value", "valueBoolean": false }
+      ]
+    }
+  ]
+}
+```
+{% endtab %}
+{% endtabs %}
