@@ -1,6 +1,6 @@
 # Multi-Invoke
 
-`POST /fhir/$x-multi-invoke`
+`POST /$x-multi-invoke`
 
 Termbox extension operation that invokes a supported FHIR operation over multiple entries in a single request. This operation allows for high-throughput batch invocation of supported operations.
 
@@ -29,7 +29,7 @@ Returns a `Parameters` resource with one `entry` per input entry (in the same or
 {% tabs %}
 {% tab title="Request" %}
 ```http
-POST /fhir/$x-multi-invoke
+POST /$x-multi-invoke
 Content-Type: application/json
 
 {
