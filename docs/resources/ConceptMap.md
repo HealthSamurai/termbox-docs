@@ -1,5 +1,9 @@
 # ConceptMap
 
+A ConceptMap defines relationships between codes from one terminology and codes from another. It is used when systems need to translate or align data across different coding systems.
+
+In Termbox, ConceptMaps power `$translate` operations. A single source code may map to one or more target codes, and each mapping includes a relationship such as `equivalent` or `related-to`.
+
 ## Create
 
 The example below creates a ConceptMap that maps two local condition codes to their SNOMED CT equivalents.

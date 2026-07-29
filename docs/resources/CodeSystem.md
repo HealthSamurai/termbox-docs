@@ -1,5 +1,9 @@
 # CodeSystem
 
+A CodeSystem defines a set of codes and what those codes mean. In Termbox, CodeSystems are the source of truth for concept displays, designations, properties, hierarchy relationships, and validation.
+
+CodeSystems may represent large external terminologies such as SNOMED CT, or smaller custom code lists maintained by an implementation. Once loaded or created, their concepts can be looked up, validated, matched by display text, and compared by hierarchy.
+
 ## Create
 
 The example below creates a CodeSystem with a three-level concept hierarchy, custom properties, and multi-language designations.

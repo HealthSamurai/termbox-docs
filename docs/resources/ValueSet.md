@@ -1,5 +1,9 @@
 # ValueSet
 
+A ValueSet describes a selectable set of codes, usually by referencing one or more CodeSystems. It can list codes explicitly or define rules that include concepts by hierarchy, properties, filters, or other terminology criteria.
+
+In Termbox, ValueSets are used to expand a definition into concrete codes and to validate whether a code belongs to that set. This is the resource to use when an application needs a controlled list of allowed answers or values.
+
 ## Create
 
 The example below creates a ValueSet that selects three concepts from an existing CodeSystem.
