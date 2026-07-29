@@ -17,9 +17,25 @@ Returns a FHIR `Parameters` resource. Common output parameters include `code`, `
 ## Example
 
 {% tabs %}
-{% tab title="Request" %}
+{% tab title="GET Request" %}
 ```http
 GET /CodeSystem/$lookup?system=http://example.org/CodeSystem/cs1&code=code1&property=prop
+```
+{% endtab %}
+
+{% tab title="POST Request" %}
+```http
+POST /CodeSystem/$lookup
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "system", "valueUri": "http://example.org/CodeSystem/cs1" },
+    { "name": "code", "valueCode": "code1" },
+    { "name": "property", "valueCode": "prop" }
+  ]
+}
 ```
 {% endtab %}
 

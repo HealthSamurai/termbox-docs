@@ -17,9 +17,23 @@ Returns a FHIR `ValueSet` resource with an `expansion` element.
 ## Example
 
 {% tabs %}
-{% tab title="Request" %}
+{% tab title="GET Request" %}
 ```http
 GET /ValueSet/$expand?url=http://example.org/ValueSet/vs1
+```
+{% endtab %}
+
+{% tab title="POST Request" %}
+```http
+POST /ValueSet/$expand
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "url", "valueUri": "http://example.org/ValueSet/vs1" }
+  ]
+}
 ```
 {% endtab %}
 
