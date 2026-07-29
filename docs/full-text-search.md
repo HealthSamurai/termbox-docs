@@ -131,4 +131,4 @@ FUZZY_SEARCH_ENABLED=true|false
 
 Set it to `false` only when you want prefix-only full text search:
 
-See [Configuration](configuration.md) for the full environment variable reference.
+See [Toggles](configuration.md#toggles) for the full environment variable reference.

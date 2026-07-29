@@ -1,6 +1,6 @@
 # Running Termbox on Managed PostgreSQL
 
-Termbox can connect to any PostgreSQL-compatible database, both self-hosted and managed. Database connections are configured with the [`PG_*`](configuration.md) environment variables. Connecting to a typical PostgreSQL instance may require the following setup:
+Termbox can connect to any PostgreSQL-compatible database, both self-hosted and managed. Database connections are configured with the [`PG_*`](configuration.md#pg) environment variables. Connecting to a typical PostgreSQL instance may require the following setup:
 
 ```shell
 PG_HOST=<host>
@@ -20,7 +20,7 @@ Some managed PostgreSQL instances require special authentication methods.
 Termbox currently supports Lakebase **Autoscaling** projects (`project` / `branch` / `endpoint`). Since March 2026, new Lakebase instances are created as **Autoscaling**, and existing [*Provisioned*](https://docs.databricks.com/aws/en/oltp/instances/) instances are being upgraded to **Autoscaling** starting June 2026 — for that reason, **Provisioned** instances are not supported in Termbox.
 {% endhint %}
 
-When `PG_DATABRICKS_HOST`, `PG_DATABRICKS_CLIENT_ID`, and `PG_DATABRICKS_CLIENT_SECRET` are set, Termbox resolves database credentials dynamically instead of using `PG_USER` / `PG_PASSWORD`. The resolved credential is cached and reused for new pooled connections until `PG_MAX_LIFETIME` elapses (default `3300000` ms / 55 minutes), at which point it's transparently refreshed. `PG_MAX_LIFETIME` should be kept below Databricks' token expiry (1 hour).
+When [`PG_DATABRICKS_HOST`, `PG_DATABRICKS_CLIENT_ID`, and `PG_DATABRICKS_CLIENT_SECRET`](configuration.md#pg_databricks) are set, Termbox resolves database credentials dynamically instead of using `PG_USER` / `PG_PASSWORD`. The resolved credential is cached and reused for new pooled connections until `PG_MAX_LIFETIME` elapses (default `3300000` ms / 55 minutes), at which point it's transparently refreshed. `PG_MAX_LIFETIME` should be kept below Databricks' token expiry (1 hour).
 
 {% stepper %}
 {% step %}

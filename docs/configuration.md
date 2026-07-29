@@ -9,42 +9,74 @@ This section documents all of the environment variables that are currently avail
 
 <div class="config-table">
 
-| Env var                        | Description                                                                                                  | Default                              | Values / Examples                |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------ | -------------------------------- |
-| `LICENSE`                      | Termbox license                                                                                              |                                      |                                  |
-| `LOG_MIN_LEVEL`                |                                                                                                              | `INFO`                               | `DEBUG`, `INFO`, `WARN`, `ERROR` |
-| `LOG_FORMAT`                   | Use json for structured logging                                                                              | `text`                               | `text` \| `json`                 |
-| `PG_PORT`                      | Postgres db port                                                                                             | `5432`                               |                                  |
-| `PG_USER`                      | Postgres user                                                                                                | `postgres`                           |                                  |
-| `PG_PASSWORD`                  | Postgres password                                                                                            |                                      |                                  |
-| `PG_HOST`                      | Postgres host                                                                                                | `localhost`                          |                                  |
-| `PG_DATABASE`                  | Name of the main database                                                                                    | `termbox`                            |                                  |
-| `PG_POOL_SIZE`                 | Connection pool max size                                                                                     | `20`                                 |                                  |
-| `PG_MAINTENANCE_WORK_MEM`      | Postgres `maintenance_work_mem` used per session for load operations                                         | `128MB`                              |                                  |
-| `PG_WORK_MEM`                  | Postgres `work_mem` used per session for load operations                                                     | `128MB`                              |                                  |
-| `PG_MAX_LIFETIME`              | Max lifetime of a pooled connection, in ms                                                                   | `3300000`                            |                                  |
-| `PG_DATABRICKS_HOST`           | Databricks workspace URL                                                                                     |                                      |                                  |
-| `PG_DATABRICKS_PROJECT`        | Lakebase project ID                                                                                          |                                      |                                  |
-| `PG_DATABRICKS_BRANCH`         | Lakebase branch ID                                                                                           |                                      |                                  |
-| `PG_DATABRICKS_ENDPOINT`       | Lakebase endpoint ID                                                                                         |                                      |                                  |
-| `PG_DATABRICKS_CLIENT_ID`      | Databricks service principal client ID                                                                       |                                      |                                  |
-| `PG_DATABRICKS_CLIENT_SECRET`  | Databricks service principal client secret                                                                   |                                      |                                  |
-| `HTTP_PORT`                    | HTTP server port                                                                                             | `3000`                               |                                  |
-| `HTTP_MAX_BODY`                | Max body size in bytes                                                                                       | `500000000`                          |                                  |
-| `HTTP_BASE_URL`                | Base url where termbox will be hosted (useful for outgoing links)                                            |                                      |                                  |
-| `CACHE_CANONICAL_ENABLED`      | Whether caching of canonical resources is enabled                                                            | `true`                               | `true` \| `false`                |
-| `CACHE_CANONICAL_SIZE`         | Size (in items) of the canonical resource cache                                                              | `200000`                             |                                  |
-| `FHIR_TOTAL_BEHAVIOR`          | Controls whether FHIR responses include calculated totals by default                                         | `none`                               | `none` \| `calculate`            |
-| `FHIR_MULTI_INVOKE_BATCH_SIZE` | Number of patterns processed per database batch in `$x-multi-invoke` operations                              | `6000`                               |                                  |
-| `FUZZY_SEARCH_ENABLED`         | Enables typo-tolerant full text search for `ValueSet/$expand` filters; set to `false` for prefix-only search | `true`                               | `true` \| `false`                |
-| `SNOMEDCT_DEFAULT_EDITION`     | Default edition of SNOMED                                                                                    | `900000000000207008` (international) | `83821000000107`: UK Edition     |
-| `READONLY_MODE`                | Enables read-only mode: disables Admin API, UI ingest/delete routes, and FHIR write endpoints                | `false`                              | `true` \| `false`                |
-| `UI_ENABLED`                   | Enables the browser UI under `/ui`                                                                           | `true`                               | `true` \| `false`                |
-| `ADMIN_API_ENABLED`            | Enables the Admin API under `/admin`                                                                         | `true`                               | `true` \| `false`                |
-| `FHIR_API_ENABLED`             | Enables all FHIR API routes under `/fhir`                                                                    | `true`                               | `true` \| `false`                |
-| `FHIR_API_R4_ENABLED`          | Enables FHIR R4 API routes under `/fhir/r4`                                                                  | `true`                               | `true` \| `false`                |
-| `FHIR_API_R4B_ENABLED`         | Enables FHIR R4b API routes under `/fhir/r4b`                                                                | `true`                               | `true` \| `false`                |
-| `FHIR_API_R5_ENABLED`          | Enables FHIR R5 API routes under `/fhir/r5`                                                                  | `true`                               | `true` \| `false`                |
-| `FHIR_API_R6_ENABLED`          | Enables FHIR R6 API routes under `/fhir/r6`                                                                  | `true`                               | `true` \| `false`                |
+## HTTP
+
+Web application and HTTP server settings.
+
+| Env var         | Description                                                       | Default     | Values / Examples                |
+| --------------- | ----------------------------------------------------------------- | ----------- | -------------------------------- |
+| `LICENSE`       | Termbox license                                                   |             |                                  |
+| `LOG_MIN_LEVEL` |                                                                   | `INFO`      | `DEBUG`, `INFO`, `WARN`, `ERROR` |
+| `LOG_FORMAT`    | Use json for structured logging                                   | `text`      | `text` \| `json`                 |
+| `HTTP_PORT`     | HTTP server port                                                  | `3000`      |                                  |
+| `HTTP_MAX_BODY` | Max body size in bytes                                            | `500000000` |                                  |
+| `HTTP_BASE_URL` | Base url where termbox will be hosted (useful for outgoing links) |             |                                  |
+
+## PG
+
+PostgreSQL database connection and session settings.
+
+| Env var                   | Description                                                          | Default     | Values / Examples |
+| ------------------------- | -------------------------------------------------------------------- | ----------- | ----------------- |
+| `PG_PORT`                 | Postgres db port                                                     | `5432`      |                   |
+| `PG_USER`                 | Postgres user                                                        | `postgres`  |                   |
+| `PG_PASSWORD`             | Postgres password                                                    |             |                   |
+| `PG_HOST`                 | Postgres host                                                        | `localhost` |                   |
+| `PG_DATABASE`             | Name of the main database                                            | `termbox`   |                   |
+| `PG_POOL_SIZE`            | Connection pool max size                                             | `20`        |                   |
+| `PG_MAINTENANCE_WORK_MEM` | Postgres `maintenance_work_mem` used per session for load operations | `128MB`     |                   |
+| `PG_WORK_MEM`             | Postgres `work_mem` used per session for load operations             | `128MB`     |                   |
+| `PG_MAX_LIFETIME`         | Max lifetime of a pooled connection, in ms                           | `3300000` (55min)   |                   |
+
+## PG_DATABRICKS
+
+Databricks Lakebase connection settings.
+
+| Env var                        | Description                                | Default | Values / Examples |
+| ------------------------------ | ------------------------------------------ | ------- | ----------------- |
+| `PG_DATABRICKS_HOST`           | Databricks workspace URL                   |         |                   |
+| `PG_DATABRICKS_PROJECT`        | Lakebase project ID                        |         |                   |
+| `PG_DATABRICKS_BRANCH`         | Lakebase branch ID                         |         |                   |
+| `PG_DATABRICKS_ENDPOINT`       | Lakebase endpoint ID                       |         |                   |
+| `PG_DATABRICKS_CLIENT_ID`      | Databricks service principal client ID     |         |                   |
+| `PG_DATABRICKS_CLIENT_SECRET`  | Databricks service principal client secret |         |                   |
+
+## Toggles
+
+Feature flags and boolean switches.
+
+| Env var                   | Description                                                                                                  | Default | Values / Examples |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------ | ------- | ----------------- |
+| `CACHE_CANONICAL_ENABLED` | Whether caching of canonical resources is enabled                                                            | `true`  | `true` \| `false` |
+| `FUZZY_SEARCH_ENABLED`    | Enables typo-tolerant full text search for `ValueSet/$expand` filters; set to `false` for prefix-only search | `true`  | `true` \| `false` |
+| `READONLY_MODE`           | Enables read-only mode: disables Admin API, UI ingest/delete routes, and FHIR write endpoints                | `false` | `true` \| `false` |
+| `UI_ENABLED`              | Enables the browser UI under `/ui`                                                                           | `true`  | `true` \| `false` |
+| `ADMIN_API_ENABLED`       | Enables the Admin API under `/admin`                                                                         | `true`  | `true` \| `false` |
+| `FHIR_API_ENABLED`        | Enables all FHIR API routes under `/fhir`                                                                    | `true`  | `true` \| `false` |
+| `FHIR_API_R4_ENABLED`     | Enables FHIR R4 API routes under `/fhir/r4`                                                                  | `true`  | `true` \| `false` |
+| `FHIR_API_R4B_ENABLED`    | Enables FHIR R4b API routes under `/fhir/r4b`                                                                | `true`  | `true` \| `false` |
+| `FHIR_API_R5_ENABLED`     | Enables FHIR R5 API routes under `/fhir/r5`                                                                  | `true`  | `true` \| `false` |
+| `FHIR_API_R6_ENABLED`     | Enables FHIR R6 API routes under `/fhir/r6`                                                                  | `true`  | `true` \| `false` |
+
+## Misc
+
+Other runtime behavior settings.
+
+| Env var                        | Description                                                                     | Default                              | Values / Examples                |
+| ------------------------------ | ------------------------------------------------------------------------------- | ------------------------------------ | -------------------------------- |
+| `CACHE_CANONICAL_SIZE`         | Size (in items) of the canonical resource cache                                 | `200000`                             |                                  |
+| `FHIR_TOTAL_BEHAVIOR`          | Controls whether FHIR responses include calculated totals by default            | `none`                               | `none` \| `calculate`            |
+| `FHIR_MULTI_INVOKE_BATCH_SIZE` | Number of patterns processed per database batch in `$x-multi-invoke` operations | `6000`                               |                                  |
+| `SNOMEDCT_DEFAULT_EDITION`     | Default edition of SNOMED                                                       | `900000000000207008` (international) | `83821000000107`: UK Edition     |
 
 </div>
