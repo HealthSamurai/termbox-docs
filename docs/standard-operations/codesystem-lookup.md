@@ -1,9 +1,5 @@
 # CodeSystem/$lookup
 
-`GET /CodeSystem/$lookup`
-
-`POST /CodeSystem/$lookup`
-
 Resolves a code in a CodeSystem and returns concept details such as display, designations, properties, abstract status, and version.
 
 ## FHIR Specification

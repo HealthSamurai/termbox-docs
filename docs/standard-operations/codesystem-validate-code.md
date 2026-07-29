@@ -1,9 +1,5 @@
 # CodeSystem/$validate-code
 
-`GET /CodeSystem/$validate-code`
-
-`POST /CodeSystem/$validate-code`
-
 Checks whether a code, Coding, or CodeableConcept is valid in a CodeSystem. When `display` is supplied, Termbox also validates the display text.
 
 ## FHIR Specification

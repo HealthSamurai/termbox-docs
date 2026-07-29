@@ -1,9 +1,5 @@
 # ValueSet/$validate-code
 
-`GET /ValueSet/$validate-code`
-
-`POST /ValueSet/$validate-code`
-
 Checks whether a code, Coding, or CodeableConcept is a member of a ValueSet. When `display` is supplied, Termbox also validates the display text.
 
 ## FHIR Specification

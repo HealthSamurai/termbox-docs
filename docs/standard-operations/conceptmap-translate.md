@@ -1,9 +1,5 @@
 # ConceptMap/$translate
 
-`GET /ConceptMap/$translate`
-
-`POST /ConceptMap/$translate`
-
 Translates a code from one terminology to another using a ConceptMap.
 
 ## FHIR Specification

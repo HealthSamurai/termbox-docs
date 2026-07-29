@@ -1,9 +1,5 @@
 # CodeSystem/$subsumes
 
-`GET /CodeSystem/$subsumes`
-
-`POST /CodeSystem/$subsumes`
-
 Tests the subsumption relationship between two codes in a CodeSystem.
 
 ## FHIR Specification

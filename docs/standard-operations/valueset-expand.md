@@ -1,9 +1,5 @@
 # ValueSet/$expand
 
-`GET /ValueSet/$expand`
-
-`POST /ValueSet/$expand`
-
 Expands a ValueSet into the concrete set of concepts selected by its compose rules.
 
 ## FHIR Specification

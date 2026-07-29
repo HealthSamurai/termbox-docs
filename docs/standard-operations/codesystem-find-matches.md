@@ -1,7 +1,5 @@
 # CodeSystem/$find-matches
 
-`POST /CodeSystem/$find-matches`
-
 Returns possible matching CodeSystem concepts for a submitted display string. Termbox currently supports exact, case-sensitive matching against concept designations and display text.
 
 ## FHIR Specification
