@@ -144,10 +144,6 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## Lookup a Concept
-
-Use [`CodeSystem/$lookup`](../standard-operations/codesystem-lookup.md) to resolve a code against the newly created CodeSystem and return its display, designations, and properties.
-
 ## Delete
 
 [Deleting](https://hl7.org/fhir/http.html#delete) a CodeSystem removes the resource and all its concepts from the server.
@@ -159,3 +155,14 @@ DELETE /CodeSystem/d528f194-091b-4ec7-ab21-dcfead860d2c
 ```http
 HTTP/1.1 204 No Content
 ```
+
+## Supported Operations
+
+Termbox supports the following FHIR operations for CodeSystem resources:
+
+| Operation | Description |
+| --------- | ----------- |
+| [`CodeSystem/$lookup`](../standard-operations/codesystem-lookup.md) | Resolve a code and return concept details such as display, designations, properties, abstract status, and version. |
+| [`CodeSystem/$validate-code`](../standard-operations/codesystem-validate-code.md) | Check whether a code, Coding, or CodeableConcept is valid in a CodeSystem. |
+| [`CodeSystem/$subsumes`](../standard-operations/codesystem-subsumes.md) | Test the subsumption relationship between two codes in a CodeSystem. |
+| [`CodeSystem/$find-matches`](../standard-operations/codesystem-find-matches.md) | Return possible matching CodeSystem concepts for a submitted display string. |

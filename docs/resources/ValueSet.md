@@ -66,10 +66,6 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## Expand the ValueSet
-
-Use [`ValueSet/$expand`](../standard-operations/valueset-expand.md) to resolve the compose rules and return the full enumerated set of concepts with their displays.
-
 ## Delete
 
 [Deleting](https://hl7.org/fhir/http.html#delete) a ValueSet removes the resource from the server.
@@ -81,3 +77,12 @@ DELETE /ValueSet/a3f8e621-7c94-4b52-9d01-e2b345678901
 ```http
 HTTP/1.1 204 No Content
 ```
+
+## Supported Operations
+
+Termbox supports the following FHIR operations for ValueSet resources:
+
+| Operation | Description |
+| --------- | ----------- |
+| [`ValueSet/$expand`](../standard-operations/valueset-expand.md) | Expand a ValueSet into the concrete set of concepts selected by its compose rules. |
+| [`ValueSet/$validate-code`](../standard-operations/valueset-validate-code.md) | Check whether a code, Coding, or CodeableConcept is a member of a ValueSet. |

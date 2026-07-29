@@ -68,10 +68,6 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## Translate
-
-Use [`ConceptMap/$translate`](../standard-operations/conceptmap-translate.md) to translate a code using the newly created ConceptMap.
-
 ## Delete
 
 [Deleting](https://hl7.org/fhir/http.html#delete) a ConceptMap removes the resource and all its mappings from the server.
@@ -83,3 +79,11 @@ DELETE /ConceptMap/d528f194-091b-4ec7-ab21-dcfead860d2c
 ```http
 HTTP/1.1 204 No Content
 ```
+
+## Supported Operations
+
+Termbox supports the following FHIR operations for ConceptMap resources:
+
+| Operation | Description |
+| --------- | ----------- |
+| [`ConceptMap/$translate`](../standard-operations/conceptmap-translate.md) | Translate a code from one terminology to another using a ConceptMap. |
