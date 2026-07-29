@@ -23,7 +23,7 @@
 
 ## 0.13.0
 
-- Readonly mode and other toggles (ui, admin, fhir). See [Toggles](configuration.md#toggles)
+- Readonly mode and other toggles (ui, admin, fhir). See [Feature toggles](configuration.md#feature-toggles)
 - Several FHIR API and content conformance and alignment improvements.
 - Maybe fixes and enhancements.
 

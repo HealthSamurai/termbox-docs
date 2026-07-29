@@ -1,6 +1,6 @@
 # Configuration
 
-This section documents all of the environment variables that are currently available
+Termbox is configured through environment variables. When an environment variable changes, Termbox must be restarted for the change to take effect. The tables below list the available variables and their defaults.
 
 <style>
 .config-table td:first-child,
@@ -9,9 +9,7 @@ This section documents all of the environment variables that are currently avail
 
 <div class="config-table">
 
-## HTTP
-
-Web application and HTTP server settings.
+## Termbox server settings
 
 | Env var         | Description                                                       | Default     | Values / Examples                |
 | --------------- | ----------------------------------------------------------------- | ----------- | -------------------------------- |
@@ -21,10 +19,12 @@ Web application and HTTP server settings.
 | `HTTP_PORT`     | HTTP server port                                                  | `3000`      |                                  |
 | `HTTP_MAX_BODY` | Max body size in bytes                                            | `500000000` |                                  |
 | `HTTP_BASE_URL` | Base url where termbox will be hosted (useful for outgoing links) |             |                                  |
+| `CACHE_CANONICAL_SIZE`         | Size (in items) of the canonical resource cache                                 | `200000`                             |                                  |
+| `FHIR_TOTAL_BEHAVIOR`          | Controls whether FHIR responses include calculated totals by default            | `none`                               | `none` \| `calculate`            |
+| `FHIR_MULTI_INVOKE_BATCH_SIZE` | Number of patterns processed per database batch in `$x-multi-invoke` operations | `6000`                               |                                  |
+| `SNOMEDCT_DEFAULT_EDITION`     | Default edition of SNOMED                                                       | `900000000000207008` (international) | `83821000000107`: UK Edition     |
 
-## PG
-
-PostgreSQL database connection and session settings.
+## Database settings
 
 | Env var                   | Description                                                          | Default     | Values / Examples |
 | ------------------------- | -------------------------------------------------------------------- | ----------- | ----------------- |
@@ -38,9 +38,9 @@ PostgreSQL database connection and session settings.
 | `PG_WORK_MEM`             | Postgres `work_mem` used per session for load operations             | `128MB`     |                   |
 | `PG_MAX_LIFETIME`         | Max lifetime of a pooled connection, in ms                           | `3300000` (55min)   |                   |
 
-## PG_DATABRICKS
+## Databricks settings
 
-Databricks Lakebase connection settings.
+See [Running Termbox on Managed PostgreSQL](managed-postgresql.md#databricks-lakebase-postgres) for setup instructions.
 
 | Env var                        | Description                                | Default | Values / Examples |
 | ------------------------------ | ------------------------------------------ | ------- | ----------------- |
@@ -51,9 +51,7 @@ Databricks Lakebase connection settings.
 | `PG_DATABRICKS_CLIENT_ID`      | Databricks service principal client ID     |         |                   |
 | `PG_DATABRICKS_CLIENT_SECRET`  | Databricks service principal client secret |         |                   |
 
-## Toggles
-
-Feature flags and boolean switches.
+## Feature toggles
 
 | Env var                   | Description                                                                                                  | Default | Values / Examples |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------ | ------- | ----------------- |
@@ -67,16 +65,5 @@ Feature flags and boolean switches.
 | `FHIR_API_R4B_ENABLED`    | Enables FHIR R4b API routes under `/fhir/r4b`                                                                | `true`  | `true` \| `false` |
 | `FHIR_API_R5_ENABLED`     | Enables FHIR R5 API routes under `/fhir/r5`                                                                  | `true`  | `true` \| `false` |
 | `FHIR_API_R6_ENABLED`     | Enables FHIR R6 API routes under `/fhir/r6`                                                                  | `true`  | `true` \| `false` |
-
-## Misc
-
-Other runtime behavior settings.
-
-| Env var                        | Description                                                                     | Default                              | Values / Examples                |
-| ------------------------------ | ------------------------------------------------------------------------------- | ------------------------------------ | -------------------------------- |
-| `CACHE_CANONICAL_SIZE`         | Size (in items) of the canonical resource cache                                 | `200000`                             |                                  |
-| `FHIR_TOTAL_BEHAVIOR`          | Controls whether FHIR responses include calculated totals by default            | `none`                               | `none` \| `calculate`            |
-| `FHIR_MULTI_INVOKE_BATCH_SIZE` | Number of patterns processed per database batch in `$x-multi-invoke` operations | `6000`                               |                                  |
-| `SNOMEDCT_DEFAULT_EDITION`     | Default edition of SNOMED                                                       | `900000000000207008` (international) | `83821000000107`: UK Edition     |
 
 </div>
