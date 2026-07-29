@@ -12,7 +12,7 @@ Returns a FHIR `Parameters` resource. The `result` parameter indicates whether a
 
 ## Custom ConceptMap translation example
 
-This example translates a local code using the ConceptMap created in the ConceptMap CRUD guide.
+This example translates a local code using the ConceptMap created in the ConceptMap resource guide.
 
 {% tabs %}
 {% tab title="Request" %}
@@ -63,7 +63,7 @@ Content-Type: application/json
 {% endtabs %}
 
 {% hint style="info" %}
-This example uses the ConceptMap created in the [ConceptMap CRUD guide](../CRUD/ConceptMap.md).
+This example uses the ConceptMap created in the [ConceptMap resource guide](../resources/ConceptMap.md).
 {% endhint %}
 
 ## SNOMED CT to ICD-O-3 example

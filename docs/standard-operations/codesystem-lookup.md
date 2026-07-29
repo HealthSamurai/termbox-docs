@@ -12,7 +12,7 @@ Returns a FHIR `Parameters` resource. Common output parameters include `code`, `
 
 ## Custom CodeSystem property example
 
-This example resolves a code from the CodeSystem created in the CodeSystem CRUD guide and asks for the custom `prop` property.
+This example resolves a code from the CodeSystem created in the CodeSystem resource guide and asks for the custom `prop` property.
 
 {% tabs %}
 {% tab title="GET Request" %}
@@ -90,7 +90,7 @@ Content-Type: application/fhir+json
 {% endtabs %}
 
 {% hint style="info" %}
-This example uses the CodeSystem created in the [CodeSystem CRUD guide](../CRUD/CodeSystem.md).
+This example uses the CodeSystem created in the [CodeSystem resource guide](../resources/CodeSystem.md).
 {% endhint %}
 
 ## SNOMED CT lookup example

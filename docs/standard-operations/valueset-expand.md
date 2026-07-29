@@ -12,7 +12,7 @@ Returns a FHIR `ValueSet` resource with an `expansion` element.
 
 ## Custom ValueSet expansion example
 
-This example expands the ValueSet created in the ValueSet CRUD guide.
+This example expands the ValueSet created in the ValueSet resource guide.
 
 {% tabs %}
 {% tab title="GET Request" %}
@@ -77,7 +77,7 @@ Content-Type: application/fhir+json
 {% endtabs %}
 
 {% hint style="info" %}
-This example uses the ValueSet created in the [ValueSet CRUD guide](../CRUD/ValueSet.md).
+This example uses the ValueSet created in the [ValueSet resource guide](../resources/ValueSet.md).
 {% endhint %}
 
 ## Implicit SNOMED CT ValueSet example

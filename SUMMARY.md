@@ -20,13 +20,12 @@
 
 ## Terminology Resources
 
-* [CodeSystem](CRUD/CodeSystem.md)
-* [ValueSet](CRUD/ValueSet.md)
-* [ConceptMap](CRUD/ConceptMap.md)
+* [CodeSystem](resources/CodeSystem.md)
+* [ValueSet](resources/ValueSet.md)
+* [ConceptMap](resources/ConceptMap.md)
 
 ## FHIR Operations
 
-* [Overview](fhir-operations.md)
 * [CodeSystem/$lookup](standard-operations/codesystem-lookup.md)
 * [CodeSystem/$validate-code](standard-operations/codesystem-validate-code.md)
 * [CodeSystem/$subsumes](standard-operations/codesystem-subsumes.md)
