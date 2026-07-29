@@ -4,6 +4,8 @@ A ConceptMap defines relationships between codes from one terminology and codes 
 
 In Termbox, ConceptMaps power `$translate` operations. A single source code may map to one or more target codes, and each mapping includes a relationship such as `equivalent` or `related-to`.
 
+See the official FHIR specification for the ConceptMap resource: [https://www.hl7.org/fhir/conceptmap.html](https://www.hl7.org/fhir/conceptmap.html).
+
 ## Create
 
 The example below creates a ConceptMap that maps two local condition codes to their SNOMED CT equivalents.

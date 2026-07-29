@@ -4,6 +4,8 @@ A ValueSet describes a selectable set of codes, usually by referencing one or mo
 
 In Termbox, ValueSets are used to expand a definition into concrete codes and to validate whether a code belongs to that set. This is the resource to use when an application needs a controlled list of allowed answers or values.
 
+See the official FHIR specification for the ValueSet resource: [https://www.hl7.org/fhir/valueset.html](https://www.hl7.org/fhir/valueset.html).
+
 ## Create
 
 The example below creates a ValueSet that selects three concepts from an existing CodeSystem.
