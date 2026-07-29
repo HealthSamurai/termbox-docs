@@ -4,30 +4,4 @@ Termbox provides a FHIR terminology server with a web UI, a backend API, Postgre
 
 Termbox also exposes terminology capabilities at different levels of integration: interactive exploration through the UI, application integration through FHIR operations, and analytics workflows that need terminology data available from a relational database. The same core components can run in SaaS or on-prem deployments.
 
-```mermaid
-flowchart LR
-  client[Client]
-
-  subgraph deployment[SaaS/On-prem]
-    ui[Termbox UI]
-    backend[Termbox Backend]
-    pg[(PostgreSQL)]
-
-    ui --> backend
-    backend --> pg
-  end
-
-  gallery[Termbox Gallery]
-  npm[FHIR packages registry</br>NPM]
-  atom[Syndication</br>Atom feed]
-  fs[local filesystem</br>npm, bundle, resource]
-
-  client --> ui
-  client --> backend
-  client --> pg
-
-  backend --> gallery
-  backend --> npm
-  backend --> atom
-  backend --> fs
-```
+<!-- Architecture diagram coming soon. -->
