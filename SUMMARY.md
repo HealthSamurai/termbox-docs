@@ -48,6 +48,13 @@
 
 ## Guides
 
-* [Examples](examples.md)
+* [Lookup a code in a code system](examples/lookup-code.md)
+* [Validate a code in a code system](examples/validate-code.md)
+* [Validate a code using an implicit value set](examples/validate-code-implicit-valueset.md)
+* [Searching on an implicit value set](examples/search-implicit-valueset.md)
+* [Translating a SNOMED code to ICD-O-3](examples/translate-snomed-to-icdo3.md)
+* [Translating across all known maps](examples/translate-all-known-maps.md)
+* [Translating using an implicit ConceptMap](examples/translate-implicit-conceptmap.md)
+* [Searching on an ad-hoc value set](examples/search-adhoc-valueset.md)
 * [RxNorm Guide](guides/rxnorm.md)
 * [SNOMED guide](guides/snomed.md)
