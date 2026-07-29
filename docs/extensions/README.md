@@ -1,6 +1,6 @@
-# Custom Operations
+# Extensions
 
-In addition to the standard FHIR operations, Termbox provides custom operations that extend the base specification.
+In addition to the standard FHIR operations, Termbox provides extensions that add behavior outside the base specification.
 
 | Operation                       | Description                                                             |
 | ------------------------------- | ----------------------------------------------------------------------- |

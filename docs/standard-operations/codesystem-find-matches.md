@@ -46,5 +46,5 @@ Content-Type: application/fhir+json
 {% endtabs %}
 
 {% hint style="info" %}
-For high-throughput matching over many display strings, use [$x-multi-invoke](../custom-operations/multi-invoke.md) with `operation` set to `CodeSystem/$find-matches`.
+For high-throughput matching over many display strings, use [$x-multi-invoke](../extensions/multi-invoke.md) with `operation` set to `CodeSystem/$find-matches`.
 {% endhint %}

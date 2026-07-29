@@ -2,6 +2,9 @@
 # Format: old_path: new_path
 
 redirects:
-  crud: CRUD/README.md
+  crud: CRUD/CodeSystem.md
+  fhir-api: capabilities.md
   loading-data: loading-data/README.md
-  fhir-api#x-multi-invoke: custom-operations/multi-invoke.md
+  fhir-api#x-multi-invoke: extensions/multi-invoke.md
+  custom-operations: extensions/README.md
+  custom-operations/multi-invoke: extensions/multi-invoke.md

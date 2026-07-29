@@ -20,7 +20,8 @@
 
 ## Reference
 
-* [FHIR API](fhir-api.md)
+* [Capabilities](capabilities.md)
+* [FHIR Operations](fhir-operations.md)
   * [CodeSystem/$lookup](standard-operations/codesystem-lookup.md)
   * [CodeSystem/$validate-code](standard-operations/codesystem-validate-code.md)
   * [CodeSystem/$subsumes](standard-operations/codesystem-subsumes.md)
@@ -28,8 +29,11 @@
   * [ValueSet/$expand](standard-operations/valueset-expand.md)
   * [ValueSet/$validate-code](standard-operations/valueset-validate-code.md)
   * [ConceptMap/$translate](standard-operations/conceptmap-translate.md)
-  * [Custom Operations](custom-operations/README.md)
-    * [$x-multi-invoke](custom-operations/multi-invoke.md)
+  * [Extensions](extensions/README.md)
+    * [$x-multi-invoke](extensions/multi-invoke.md)
+* [CodeSystem](CRUD/CodeSystem.md)
+* [ValueSet](CRUD/ValueSet.md)
+* [ConceptMap](CRUD/ConceptMap.md)
 * [Full Text Search](full-text-search.md)
 * [Running Termbox on Managed PostgreSQL](managed-postgresql.md)
 * [Authentication and Authorization](auth.md)
@@ -39,10 +43,6 @@
 ## Guides
 
 * [Examples](examples.md)
-* [CRUD](CRUD/README.md)
-  * [CodeSystem](CRUD/CodeSystem.md)
-  * [ValueSet](CRUD/ValueSet.md)
-  * [ConceptMap](CRUD/ConceptMap.md)
 * [RxNorm Guide](guides/rxnorm.md)
 * [SNOMED guide](guides/snomed.md)
 
