@@ -10,7 +10,7 @@ See the official FHIR specification for supported request parameters and respons
 
 Returns a FHIR `Parameters` resource. The `result` parameter indicates whether a translation was found. Each `match` part contains a target `concept` and its `relationship`.
 
-## Example
+## Custom ConceptMap translation example
 
 This example translates a local code using the ConceptMap created in the ConceptMap CRUD guide.
 
@@ -32,11 +32,6 @@ Content-Type: application/json
 {% endtab %}
 
 {% tab title="Response" %}
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-```
-
 ```json
 {
   "resourceType": "Parameters",

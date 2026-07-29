@@ -10,7 +10,7 @@ See the official FHIR specification for supported request parameters and respons
 
 Returns a FHIR `Parameters` resource. The `result` output parameter is `true` when the submitted code is valid.
 
-## Example
+## SNOMED CT Coding example
 
 This example validates a SNOMED CT Coding, including the submitted display text.
 

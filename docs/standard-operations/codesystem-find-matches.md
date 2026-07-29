@@ -10,7 +10,7 @@ See the official FHIR specification for supported request parameters and respons
 
 Returns a FHIR `Parameters` resource with zero or more `match` parameters. Each `match` contains a `code` part.
 
-## Example
+## Display string match example
 
 {% tabs %}
 {% tab title="Request" %}

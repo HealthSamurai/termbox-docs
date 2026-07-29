@@ -10,7 +10,7 @@ See the official FHIR specification for supported request parameters and respons
 
 Returns a FHIR `Parameters` resource. Common output parameters include `code`, `display`, `name`, `system`, `abstract`, `version`, `designation`, and `property`.
 
-## Example
+## Custom CodeSystem property example
 
 This example resolves a code from the CodeSystem created in the CodeSystem CRUD guide and asks for the custom `prop` property.
 
@@ -38,11 +38,6 @@ Content-Type: application/fhir+json
 {% endtab %}
 
 {% tab title="Response" %}
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-```
-
 ```json
 {
   "resourceType": "Parameters",
@@ -127,11 +122,6 @@ Accept: application/fhir+json
 {% endtab %}
 
 {% tab title="Response" %}
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-```
-
 ```json
 {
   "resourceType": "Parameters",

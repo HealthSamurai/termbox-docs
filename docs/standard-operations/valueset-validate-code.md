@@ -10,7 +10,7 @@ See the official FHIR specification for supported request parameters and respons
 
 Returns a FHIR `Parameters` resource. The `result` output parameter is `true` when the submitted code is in the ValueSet.
 
-## Example
+## Explicit SNOMED CT ValueSet example
 
 This example validates a SNOMED CT code against an implicit ValueSet and supplies the code system explicitly.
 

@@ -10,7 +10,7 @@ See the official FHIR specification for supported request parameters and respons
 
 Returns a FHIR `ValueSet` resource with an `expansion` element.
 
-## Example
+## Custom ValueSet expansion example
 
 This example expands the ValueSet created in the ValueSet CRUD guide.
 
@@ -36,11 +36,6 @@ Content-Type: application/fhir+json
 {% endtab %}
 
 {% tab title="Response" %}
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-```
-
 ```json
 {
   "resourceType": "ValueSet",

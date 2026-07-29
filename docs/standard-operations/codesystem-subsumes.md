@@ -10,7 +10,7 @@ See the official FHIR specification for supported request parameters and respons
 
 Returns a FHIR `Parameters` resource with one `outcome` parameter. Possible values are `equivalent`, `subsumes`, `subsumed-by`, and `not-subsumed`.
 
-## Example
+## SNOMED CT subsumption example
 
 {% tabs %}
 {% tab title="GET Request" %}
