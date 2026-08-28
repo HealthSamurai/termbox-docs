@@ -1,5 +1,17 @@
 # Release Notes
 
+## 0.17.0
+
+- Support for SNOMED CT post-coordination in `CodeSystem/$lookup`, `CodeSystem/$validate-code`, and `ValueSet/$validate-code`
+- Bug fixes and other enhancements
+
+## 0.16.0
+
+- ConceptMap list/details UI pages, and a ConceptMap/$translate ops UI page
+- CORS support for the FHIR API
+- Lakebase Postgres instance support
+- Bug fixes and other enhancements
+
 ## 0.15.0
 
 - Fuzzy search support
