@@ -7,3 +7,5 @@
 # docs-tools
 node_modules/
 .docs-tools/
+
+.mcp/

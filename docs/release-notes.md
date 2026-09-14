@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.17.1
+
+- Enable streaming ingestion for standalone CodeSystems
+- CodeSystems reprops, ingestion and validation fixes
+- Canonical resolution fixes
+
 ## 0.17.0
 
 - Support for SNOMED CT post-coordination in `CodeSystem/$lookup`, `CodeSystem/$validate-code`, and `ValueSet/$validate-code`
