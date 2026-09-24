@@ -72,6 +72,50 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+## Read
+
+[Reading](https://hl7.org/fhir/http.html#read) a ValueSet returns the resource with the concepts enumerated in its `compose.include` and `compose.exclude` rules.
+
+```http
+GET /ValueSet/a3f8e621-7c94-4b52-9d01-e2b345678901
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+
+```json
+{
+  "resourceType": "ValueSet",
+  "id": "a3f8e621-7c94-4b52-9d01-e2b345678901",
+  "url": "http://example.org/ValueSet/vs1",
+  "version": "0.1.0",
+  "name": "ExampleValueSet",
+  "status": "active",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/CodeSystem/cs1",
+        "concept": [
+          { "code": "code1" },
+          { "code": "code2" },
+          { "code": "code3" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+{% hint style="info" %}
+To keep responses bounded, a read returns at most `FHIR_READ_ITEMS_LIMIT` enumerated concepts across all include and exclude rules (default `1000`, see [Configuration](../configuration.md)). When the resource has more, the response is truncated and tagged with `SUBSETTED` in `meta.tag`. Rules whose concepts were cut off keep the `http://health-samurai.io/extensions/excised-data` extension, so a client can tell which parts of the compose are incomplete.
+{% endhint %}
+
+Reading a ValueSet does not expand it. Use [`ValueSet/$expand`](../standard-operations/valueset-expand.md) to get the concrete set of codes selected by the ValueSet.
+
+If the ValueSet does not exist, the server responds with `404 Not Found` and an `OperationOutcome` with the `not-found` issue code.
+
 ## Delete
 
 [Deleting](https://hl7.org/fhir/http.html#delete) a ValueSet removes the resource from the server.

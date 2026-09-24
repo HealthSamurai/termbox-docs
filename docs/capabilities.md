@@ -51,7 +51,7 @@ Termbox supports the [FHIR REST API](https://hl7.org/fhir/http.html) for managin
 | Interaction | FHIR Spec                                                    | CodeSystem | ValueSet | ConceptMap |
 | ----------- | ------------------------------------------------------------ | ---------- | -------- | ---------- |
 | Create      | [POST   /[type]](https://hl7.org/fhir/http.html#create)      | ✅          | ✅        | ✅          |
-| Read        | [GET    /[type]/[id]](https://hl7.org/fhir/http.html#read)   |            |          |            |
+| Read        | [GET    /[type]/[id]](https://hl7.org/fhir/http.html#read)   | ✅          | ✅        | ✅          |
 | Update      | [PUT    /[type]/[id]](https://hl7.org/fhir/http.html#update) |            |          |            |
 | Delete      | [DELETE /[type]/[id]](https://hl7.org/fhir/http.html#delete) | ✅          | ✅        | ✅          |
 | Search      | [GET    /[type]](https://hl7.org/fhir/http.html#search)      |            |          |            |

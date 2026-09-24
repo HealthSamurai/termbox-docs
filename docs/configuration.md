@@ -21,6 +21,7 @@ Termbox is configured through environment variables. When an environment variabl
 | `HTTP_BASE_URL` | Base url where termbox will be hosted (useful for outgoing links) |             |                                  |
 | `CACHE_CANONICAL_SIZE`         | Size (in items) of the canonical resource cache                                 | `200000`                             |                                  |
 | `FHIR_TOTAL_BEHAVIOR`          | Controls whether FHIR responses include calculated totals by default            | `none`                               | `none` \| `calculate`            |
+| `FHIR_READ_ITEMS_LIMIT`        | Max number of concepts (CodeSystem, ValueSet) or mappings (ConceptMap) returned by a FHIR read interaction; larger resources are returned truncated and tagged `SUBSETTED` | `1000` |                                  |
 | `FHIR_MULTI_INVOKE_BATCH_SIZE` | Number of patterns processed per database batch in `$x-multi-invoke` operations | `6000`                               |                                  |
 | `SNOMEDCT_DEFAULT_EDITION`     | Default edition of SNOMED                                                       | `900000000000207008` (international) | `83821000000107`: UK Edition     |
 

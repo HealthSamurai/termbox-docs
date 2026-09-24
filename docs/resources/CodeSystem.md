@@ -150,6 +150,59 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+## Read
+
+[Reading](https://hl7.org/fhir/http.html#read) a CodeSystem returns the resource together with its concepts. Concepts are returned as a flat list, and the `count` element holds the total number of concepts in the CodeSystem. Nested concepts (`concept.concept`) are also returned in the flat list, with the hierarchy expressed through concept properties.
+
+The example below reads a small CodeSystem with three concepts.
+
+```http
+GET /CodeSystem/7b1e9c40-5d2a-4f8e-9a63-2c8d1f0e4b57
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+
+```json
+{
+  "resourceType": "CodeSystem",
+  "id": "7b1e9c40-5d2a-4f8e-9a63-2c8d1f0e4b57",
+  "url": "http://example.org/CodeSystem/cs2",
+  "version": "0.1.0",
+  "name": "SmallCodeSystem",
+  "status": "active",
+  "content": "complete",
+  "count": 3,
+  "concept": [
+    {
+      "code": "code1",
+      "display": "Display 1",
+      "designation": [{ "value": "Anzeige 1", "language": "de-DE" }],
+      "property": [{ "code": "prop", "valueCode": "old" }]
+    },
+    {
+      "code": "code2",
+      "display": "Display 2",
+      "definition": "Second concept",
+      "property": [{ "code": "prop", "valueCode": "new" }]
+    },
+    {
+      "code": "code3",
+      "display": "Display 3",
+      "property": [{ "code": "prop", "valueCode": "old" }]
+    }
+  ]
+}
+```
+
+{% hint style="info" %}
+To keep responses bounded, a read returns at most `FHIR_READ_ITEMS_LIMIT` concepts (default `1000`, see [Configuration](../configuration.md)). When the resource has more, the response is truncated and tagged with `SUBSETTED` in `meta.tag`.
+{% endhint %}
+
+If the CodeSystem does not exist, the server responds with `404 Not Found` and an `OperationOutcome` with the `not-found` issue code.
+
 ## Delete
 
 [Deleting](https://hl7.org/fhir/http.html#delete) a CodeSystem removes the resource and all its concepts from the server.
