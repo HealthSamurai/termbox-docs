@@ -18,6 +18,7 @@ Termbox supports all R4, R5, and R6 normative operations on ValueSets and CodeSy
 | CRUD of Terminology resources                | Create, Read, Update, Delete operations                         | 🏗️       |
 | Pre-coordinated codes                        | Standard coded concepts                                         | ✅       |
 | Post-coordinated codes                       | Complex expressions not yet supported                           | ❌       |
+| SNOMED CT ECL                                | Expression Constraint Language, [subset](#snomed-ct-ecl)        | 🏗️       |
 | Intensional ValueSets                        | Filter-based ValueSet definitions                               | ✅       |
 | Extensional ValueSets                        | Explicit concept enumeration                                    | ✅       |
 | ValueSet expansion                           | Full expansion with pagination                                  | ✅       |
@@ -69,6 +70,27 @@ Termbox supports the [FHIR REST API](https://hl7.org/fhir/http.html) for managin
 | `ConceptMap/$translate`     | Translate a code from one terminology to another.                 | ✅       |
 | `ConceptMap/$closure`       | Maintenance of a client-side transitive closure table.            | ❌       |
 | `/$x-multi-invoke`          | Invoke a supported operation over multiple entries in one request. | ✅       |
+
+## SNOMED CT ECL
+
+Termbox supports a subset of the SNOMED CT [Expression Constraint Language](https://docs.snomed.org/snomed-ct-specifications/snomed-ct-expression-constraint-language) (ECL). ECL can be used in `ValueSet/$expand` and `ValueSet/$validate-code`, either through an implicit ValueSet (`http://snomed.info/sct?fhir_vs=ecl/...`) or a `constraint` filter (`=` operator) in a ValueSet definition.
+
+| ECL feature                    | Syntax                                  | Support |
+| ------------------------------ | --------------------------------------- | ------- |
+| Self                           | `73211009`                              | ✅       |
+| Descendant of                  | `< 73211009`                            | ✅       |
+| Descendant or self of          | `<< 73211009`                           | ✅       |
+| Member of reference set        | `^ 723264001`, `memberOf 723264001`     | ✅       |
+| Conjunction                    | `AND`, `,`                              | ✅       |
+| Disjunction                    | `OR`                                    | ✅       |
+| Nested expressions             | `(<< 73211009 OR << 38341003) AND ...`  | ✅       |
+| Concept terms                  | `<< 73211009 \|Diabetes mellitus\|`     | ✅       |
+| Ancestor (or self) of          | `>`, `>>`                               | ❌       |
+| Child / parent of              | `<!`, `>!`, `<<!`, `>>!`                | ❌       |
+| Exclusion                      | `MINUS`                                 | ❌       |
+| Wildcard                       | `*`                                     | ❌       |
+| Refinements and attributes     | `<< 404684003 : 363698007 = << 39057004` | ❌       |
+| Dotted attributes, filters, cardinality | `.`, `{{ }}`, `[0..1]`         | ❌       |
 
 ## FHIR Versions
 

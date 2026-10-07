@@ -37,7 +37,7 @@ Termbox SaaS includes several editions:
 | Canadian Edition | `http://snomed.info/sct/20611000087101` |
 | German Edition | `http://snomed.info/sct/11000274103` |
 
-For the International and US editions, several historical releases are also available. Implicit value sets (`?fhir_vs=isa/...`, `?fhir_vs=ecl/...`, etc.), subsumption and ECL are supported. See the [SNOMED guide](../guides/snomed.md) for details.
+For the International and US editions, several historical releases are also available. Implicit value sets (`?fhir_vs=isa/...`, `?fhir_vs=ecl/...`, etc.), subsumption and a subset of ECL are supported. See the [SNOMED guide](../guides/snomed.md) and [ECL support](../capabilities.md#snomed-ct-ecl) for details.
 
 ### LOINC
 
