@@ -10,6 +10,46 @@ See the official FHIR specification for supported request parameters and respons
 
 Returns a FHIR `ValueSet` resource with an `expansion` element.
 
+## Limits
+
+Termbox refuses expansions it considers too costly with HTTP `422 Unprocessable Entity` and an `OperationOutcome` whose issue code is `too-costly`:
+
+- A `count` above `FHIR_EXPAND_MAX_COUNT` (default `100000`). `count` equal to the limit is allowed.
+- A `ValueSet.compose.exclude` that resolves to more than `FHIR_MAX_EXCLUDED_COUNT` codes (default `20000`).
+
+To get a large expansion, page through it with `offset` and `count`. See [Configuration](../configuration.md).
+
+{% tabs %}
+{% tab title="Request" %}
+```http
+GET /ValueSet/$expand?url=http://example.org/ValueSet/vs1&count=250000
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "resourceType": "OperationOutcome",
+  "issue": [
+    {
+      "severity": "error",
+      "code": "too-costly",
+      "details": {
+        "text": "ValueSet 'http://example.org/ValueSet/vs1|0.1.0' expansion 'count' '250000' > '100000'",
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type",
+            "code": "too-costly"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ## Custom ValueSet expansion example
 
 This example expands the ValueSet created in the ValueSet resource guide.

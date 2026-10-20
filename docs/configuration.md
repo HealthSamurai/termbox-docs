@@ -27,7 +27,8 @@ Termbox is configured through environment variables. When an environment variabl
 | `INGESTION_BATCH_SIZE` | Number of rows inserted per database batch during CodeSystem ingestion | `5000` |                              |
 | `INGESTION_ANALYZE_THRESHOLD` | Min number of ingested concepts that triggers a Postgres `ANALYZE` after ingestion | `10000` |                |
 | `FHIR_DEFAULT_COUNT`           | Default page size for FHIR search and `ValueSet/$expand` when `_count`/`count` is not specified | `1000`          |                                  |
-| `FHIR_MAX_EXCLUDED_COUNT`      | Max number of codes a single `ValueSet.compose.exclude` may resolve to during expansion; larger excludes fail with `too-costly` | `20000` |                    |
+| `FHIR_MAX_EXCLUDED_COUNT`      | Max number of codes a single `ValueSet.compose.exclude` may resolve to during expansion; larger excludes fail with `422 too-costly` | `20000` |                    |
+| `FHIR_EXPAND_MAX_COUNT`        | Max `count` accepted by `ValueSet/$expand`; requests above it fail with `422 too-costly`. See [Limits](standard-operations/valueset-expand.md#limits) | `100000` |                    |
 | `CACHE_CANONICAL_SIZE`         | Size (in items) of the canonical resource cache                                 | `200000`                             |                                  |
 | `FHIR_TOTAL_BEHAVIOR`          | Controls whether FHIR responses include calculated totals by default            | `none`                               | `none` \| `calculate`            |
 | `FHIR_READ_ITEMS_LIMIT`        | Max number of concepts (CodeSystem, ValueSet) or mappings (ConceptMap) returned by a FHIR read interaction; larger resources are returned truncated and tagged `SUBSETTED` | `1000` |                                  |
