@@ -1,5 +1,14 @@
 # Release Notes
 
+## 1.0.0
+
+- **FHIR REST**: `read` interaction and instance-level operation invocation.
+- **FHIR search**: `_elements` parameter support.
+- **SNOMED CT**: Expression Constraint Language (ECL) support.
+- **Implicit ValueSets**: `CodeSystem.valueSet` support.
+- **Performance**: ECL evaluation, `$expand`, search and full-text search improvements.
+- Bug fixes and further conformance improvements.
+
 ## 0.17.1
 
 - Enable streaming ingestion for standalone CodeSystems
