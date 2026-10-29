@@ -1,5 +1,12 @@
 # Release Notes
 
+## 1.0.1
+
+- **ConceptMap/$translate**: reverse translation.
+- **CodeSystem supplements**: global language packs support.
+- **Canonical resolution**: contained ValueSets support.
+- Bug fixes and conformance improvements in `$expand`, `$lookup`, `$validate-code`, supplements and canonical version resolution.
+
 ## 1.0.0
 
 - **FHIR REST**: `read` interaction and instance-level operation invocation.
