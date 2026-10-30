@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.0.2
+
+- **ConceptMap/$translate**: `group.unmapped` support (`fixed`, `use-source-code`, `other-map`).
+- **ConceptMap/$translate**: source and target codes are checked against their CodeSystems.
+- **Performance**: global language packs are cached.
+
 ## 1.0.1
 
 - **ConceptMap/$translate**: reverse translation.
