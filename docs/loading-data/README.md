@@ -87,14 +87,14 @@ This starts a job and returns a job ID and a status endpoint:
 ```json
 {
   "job": "05c0b880-00bf-49f0-97f7-c03d51ab4470",
-  "status": "http://localhost:3000/admin/ingest/05c0b880-00bf-49f0-97f7-c03d51ab4470/status"
+  "status": "http://localhost:3000/admin/jobs/05c0b880-00bf-49f0-97f7-c03d51ab4470/status"
 }
 ```
 
 Poll the status endpoint to monitor progress:
 
 ```bash
-curl "http://localhost:3000/admin/ingest/05c0b880-00bf-49f0-97f7-c03d51ab4470/status"
+curl "http://localhost:3000/admin/jobs/05c0b880-00bf-49f0-97f7-c03d51ab4470/status"
 ```
 
 ```json

@@ -68,7 +68,7 @@ See [Running Termbox on Managed PostgreSQL](managed-postgresql.md#databricks-lak
 | ------------------------- | ------------------------------------------------------------------------------------------------------------ | ------- | ----------------- |
 | `CACHE_CANONICAL_ENABLED` | Whether caching of canonical resources is enabled                                                            | `true`  | `true` \| `false` |
 | `FUZZY_SEARCH_ENABLED`    | Enables typo-tolerant full text search for `ValueSet/$expand` filters; set to `false` for prefix-only search | `true`  | `true` \| `false` |
-| `READONLY_MODE`           | Enables read-only mode: disables Admin API, UI ingest/delete routes, and FHIR write endpoints                | `false` | `true` \| `false` |
+| `READONLY_MODE`           | Enables read-only mode: disables UI ingest/delete routes and FHIR write endpoints. To disable the Admin API, set `ADMIN_API_ENABLED=false` | `false` | `true` \| `false` |
 | `UI_ENABLED`              | Enables the browser UI under `/ui`                                                                           | `true`  | `true` \| `false` |
 | `ADMIN_API_ENABLED`       | Enables the Admin API under `/admin`                                                                         | `true`  | `true` \| `false` |
 | `FHIR_API_ENABLED`        | Enables all FHIR API routes under `/fhir`                                                                    | `true`  | `true` \| `false` |
