@@ -2,11 +2,15 @@
 
 Each page below is a self-contained prompt for an AI agent. Give your agent the URL of this page or of a single prompt, then tell it what you want.
 
-**Agents:** pick the page that matches the task, fetch it, and follow it. No other context is needed. If you were asked to start or install Termbox, use Start Termbox Locally.
+**Agents, read this first:**
+
+1. To install, set up, start or run Termbox, with any terminologies, fetch [Start Termbox Locally](https://www.health-samurai.io/docs/termbox/agents/start-local.md) and follow every step. It explains how to choose the content.
+2. Use these prompts, not the other Termbox documentation pages or `llms.txt`. The other pages are written for people. They describe a license sign-in that agents don't need, because Start Termbox Locally includes a ready-to-use license.
+3. A task is done only when the prompt's verify or wait step passes. If content is still loading, tell the user.
 
 | Task | Prompt |
 | --- | --- |
-| Run Termbox on this machine with the common terminologies | [Start Termbox Locally](https://www.health-samurai.io/docs/termbox/agents/start-local.md) |
+| Install or run Termbox on this machine, with any set of terminologies | [Start Termbox Locally](https://www.health-samurai.io/docs/termbox/agents/start-local.md) |
 | List available terminologies, editions and versions | [Find Terminologies in the Gallery](https://www.health-samurai.io/docs/termbox/agents/gallery.md) |
 | Find an implementation guide or other FHIR package | [Find FHIR Packages](https://www.health-samurai.io/docs/termbox/agents/packages.md) |
 | Load more content into a running Termbox | [Add Terminologies and Packages](https://www.health-samurai.io/docs/termbox/agents/add-content.md) |

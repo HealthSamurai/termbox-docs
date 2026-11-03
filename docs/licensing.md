@@ -1,5 +1,7 @@
 # Licensing
 
+> **AI agents:** follow [Start Termbox Locally](agents/start-local.md) instead. It includes a ready-to-use development license, so no sign-in is needed.
+
 Termbox requires a valid license before it can be used for serving FHIR API requests. If Termbox starts without a valid license, an error message is logged indicating that a license is required. You will see a log like:
 
 ```log

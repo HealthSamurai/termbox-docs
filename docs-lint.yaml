@@ -6,5 +6,5 @@ checks:
   warn_only:
     - title-mismatch
   absolute-links:
-    # Served as agents.md, where relative links would resolve one level too high
-    exclude_files: [agents/README.md]
+    # README pages are served one level up (agents.md, loading-data.md), so relative links would break
+    exclude_files: [agents/README.md, loading-data/README.md]

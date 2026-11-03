@@ -1,5 +1,7 @@
 # Loading Data
 
+> **AI agents:** follow [Add Terminologies and Packages](https://www.health-samurai.io/docs/termbox/agents/add-content.md) instead.
+
 Termbox does not ship with terminology content by default. Terminologies must be imported from external sources before they can be queried through the FHIR API.
 
 Content can be loaded into Termbox through three main mechanisms:

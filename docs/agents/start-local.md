@@ -1,12 +1,18 @@
 # Start Termbox Locally
 
-**Goal:** run Termbox, a FHIR terminology server, on this machine with SNOMED CT International, FHIR R4 core, HL7 Terminology (THO), LOINC, RxNorm and UCUM loaded.
+**Goal:** run Termbox, a FHIR terminology server, on this machine with the terminologies the user wants loaded. Without other instructions, load SNOMED CT International, FHIR R4 core, HL7 Terminology (THO), LOINC, RxNorm and UCUM.
+
+**Rules:**
+
+- Follow every step in order. Don't use other Termbox documentation pages for this task.
+- Use the `LICENSE` in `docker-compose.yaml` exactly as given. Never send the user to `/ui/license`, and never ask them for a license.
+- The task isn't done until step 3 reports that every terminology is loaded.
 
 **You need:** Docker with Docker Compose, `curl`, internet access, about 15 GB of free disk, and port 3000 free. Loading took about 20 minutes in our test. If port 3000 is taken, change the published port below and use it in every URL.
 
 ## 1. Create the files
 
-Create a folder and add the UCUM file:
+Create a folder and add the UCUM file. If the user names a folder, such as the current one, use it instead of `termbox-local`, and run `mkdir -p data/resources` there:
 
 ```bash
 mkdir -p termbox-local/data/resources
@@ -55,7 +61,19 @@ volumes:
 
 This is a shared development license. It needs no sign-up and is for development and evaluation only. Production use needs a [production license](../licensing.md).
 
-Create `data/data.yaml`:
+Create `data/data.yaml`. Keep only the entries for the content the user asked for, and always keep `hl7.fhir.r4.core`:
+
+| Content | Entry in `data.yaml` | Code to check in step 3 |
+| --- | --- | --- |
+| SNOMED CT International | gallery `http://snomed.info/sct` | `http://snomed.info/sct 73211009` |
+| LOINC | gallery `http://loinc.org` | `http://loinc.org 8867-4` |
+| RxNorm | gallery `http://www.nlm.nih.gov/research/umls/rxnorm` | `http://www.nlm.nih.gov/research/umls/rxnorm 161` |
+| UCUM | resource `/data/resources/UCUM.json` | `http://unitsofmeasure.org mg` |
+| FHIR R4 core | npm `hl7.fhir.r4.core` | `http://hl7.org/fhir/administrative-gender male` |
+| HL7 Terminology (THO) | npm `hl7.terminology.r4` | `http://terminology.hl7.org/CodeSystem/v3-ActCode AMB` |
+| FHIR extensions, extra code systems (ICD-10, ISO 3166, CVX and others) and IPS | npm `hl7.fhir.uv.extensions.r4`, `fhir.tx.support.r4` and `hl7.fhir.uv.ips` | none |
+
+For content not in this table, such as another SNOMED CT edition or an implementation guide, follow [Find Terminologies in the Gallery](gallery.md) or [Find FHIR Packages](packages.md) to get the entry, then add it here. The full default file:
 
 ```yaml
 sync: true
@@ -103,7 +121,7 @@ Loading continues in the background after the server starts.
 
 ## 3. Wait until the content is loaded
 
-The server answers before loading finishes, so check the content itself. Run this script. It tests one code from each terminology and exits once all of them pass:
+The server answers before loading finishes, so check the content itself. Run this script. It tests one code from each terminology and exits once all of them pass. Keep one `check` line per terminology you loaded, using the codes from the table in step 1, and remove the rest:
 
 ```bash
 BASE=http://localhost:3000/fhir
@@ -125,6 +143,8 @@ done
 It gives up after one hour. If it stops without printing `All terminologies loaded`, read the logs with `docker compose logs termbox` and follow [Troubleshoot Termbox](troubleshoot.md).
 
 ## 4. Report to the user
+
+Report only after step 3 prints `All terminologies loaded`. If you have to stop sooner, say clearly that Termbox is still loading, list the terminologies not yet loaded, and give the user the step 3 script to check again.
 
 Tell the user:
 
