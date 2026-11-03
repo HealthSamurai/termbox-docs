@@ -20,4 +20,19 @@ Each page below is a self-contained prompt for an AI agent. Give your agent the 
 | Give an agent terminology tools without installing anything | [Connect to the MCP Server](https://www.health-samurai.io/docs/termbox/agents/connect-mcp.md) |
 | Diagnose a problem | [Troubleshoot Termbox](https://www.health-samurai.io/docs/termbox/agents/troubleshoot.md) |
 
+## Install as a skill
+
+The same prompts are available as the `termbox` skill in [Health Samurai Skills](https://github.com/HealthSamurai/samurai-skills), so your agent has them without fetching this page:
+
+```bash
+npx skills add HealthSamurai/samurai-skills --skill termbox
+```
+
+In Claude Code, you can install it from the plugin marketplace instead:
+
+```bash
+claude plugin marketplace add HealthSamurai/samurai-skills
+claude plugin install termbox@samurai-skills
+```
+
 The full documentation index is at [llms.txt](https://www.health-samurai.io/docs/termbox/llms.txt).
