@@ -8,3 +8,12 @@ redirects:
   fhir-api#x-multi-invoke: extensions/multi-invoke.md
   custom-operations: extensions/README.md
   custom-operations/multi-invoke: extensions/multi-invoke.md
+  agents/start-local: agents/README.md
+  agents/gallery: agents/README.md
+  agents/packages: agents/README.md
+  agents/add-content: agents/README.md
+  agents/update-versions: agents/README.md
+  agents/kubernetes: agents/README.md
+  agents/query: agents/README.md
+  agents/connect-mcp: agents/README.md
+  agents/troubleshoot: agents/README.md

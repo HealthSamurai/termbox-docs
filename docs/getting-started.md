@@ -1,6 +1,6 @@
 # Getting Started
 
-> **AI agents:** follow [Start Termbox Locally](agents/start-local.md) instead. It includes a ready-to-use development license, so no sign-in is needed.
+> **AI agents:** install the [Termbox Skill](agents/README.md), which has step-by-step instructions and a ready-to-use development license, so no sign-in is needed.
 
 This section describes how to start Termbox for local development using Docker Compose with a PostgreSQL instance alongside it. Production deployments will typically use an external PostgreSQL instance.
 

@@ -8,7 +8,7 @@ https://tx.health-samurai.io/mcp/sse
 
 The server uses the content of [Termbox SaaS](saas/README.md), including SNOMED CT, LOINC and RxNorm. It requires no authentication today. It isn't part of the Termbox Docker image, so a local Termbox has no MCP endpoint.
 
-Agents can follow [Connect to the MCP Server](agents/connect-mcp.md) to set themselves up. To give an agent the MCP guidance together with the Termbox prompts, install the `termbox` skill from [Health Samurai Skills](https://github.com/HealthSamurai/samurai-skills):
+To let an agent set up the connection and query Termbox for you, install the [Termbox Skill](agents/README.md):
 
 ```bash
 npx skills add HealthSamurai/samurai-skills --skill termbox

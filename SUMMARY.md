@@ -67,13 +67,4 @@
 ## AI Agents
 
 * [MCP Server](mcp.md)
-* [Prompts](agents/README.md)
-  * [Start Termbox Locally](agents/start-local.md)
-  * [Find Terminologies in the Gallery](agents/gallery.md)
-  * [Find FHIR Packages](agents/packages.md)
-  * [Add Terminologies and Packages](agents/add-content.md)
-  * [Update Terminology Versions](agents/update-versions.md)
-  * [Roll Out to Kubernetes](agents/kubernetes.md)
-  * [Query the Terminology Server](agents/query.md)
-  * [Connect to the MCP Server](agents/connect-mcp.md)
-  * [Troubleshoot Termbox](agents/troubleshoot.md)
+* [Termbox Skill](agents/README.md)
